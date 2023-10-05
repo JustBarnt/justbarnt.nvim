@@ -151,4 +151,13 @@ return {
             "nvim-lua/plenary.nvim"
         },
     },
+
+    {
+        "folke/which-key.nvim",
+        event = "VeryLazy",
+        opts = {
+            -- your configuration here
+            -- or leave it empty to use default settings
+        }
+    }
 }

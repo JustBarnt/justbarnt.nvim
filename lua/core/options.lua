@@ -33,7 +33,8 @@ opt.ignorecase = true
 opt.smartcase = true
 
 -- time in ms to wait for a mapped sequence to complete
-opt.timeoutlen = 500
+opt.timeout = true
+opt.timeoutlen = 300
 opt.updatetime = 250
 
 -- Enable mouse mode
