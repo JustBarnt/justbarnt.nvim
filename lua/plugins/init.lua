@@ -141,23 +141,22 @@ return {
         }
     },
 
-    -- Harpoon (Quick file switching)
-    {
-        "ThePrimeagen/harpoon",
-        config = function()
-            require("plugins.config.harpoon")
-        end,
-        dependencies = { 
-            "nvim-lua/plenary.nvim"
+        -- Harpoon (Quick file switching)
+        {
+            "ThePrimeagen/harpoon",
+            config = function()
+                require("plugins.config.harpoon")
+            end,
+            dependencies = { 
+                "nvim-lua/plenary.nvim"
+            },
         },
-    },
 
-    {
-        "folke/which-key.nvim",
-        event = "VeryLazy",
-        opts = {
-            -- your configuration here
-            -- or leave it empty to use default settings
-        }
+        {
+            "folke/which-key.nvim",
+            config = function()
+                require("plugins.config.whichkeys")    
+            end,
+            opts = {}
     }
 }

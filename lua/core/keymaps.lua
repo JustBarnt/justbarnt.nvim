@@ -44,7 +44,7 @@ local init = function()
     -- Go back to File Explorer.
     -- I don't use Neotree becuase I'll be using harpoon
     keymap.set("n", "<leader>pv", vim.cmd.Ex, { desc = "Show File Explorer" })
-
+    
     -- Source files
     keymap.set("n", "<leader><leader>", function()
         vim.cmd("so")
@@ -62,9 +62,6 @@ local plugins = function()
     -- diff view
     keymap.set("n", "<leader>vd", ":DiffviewOpen<CR>", { desc = "View Diff" })
     keymap.set("n", "<leader>nh", ":DiffviewFileHistory %<CR>", { desc = "View History" })
-
-    -- Harpoon
-    -- TODO
 
     -- Comment
     -- TODO
