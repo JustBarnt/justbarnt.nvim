@@ -47,12 +47,6 @@ opt.termguicolors = true
 opt.background = 'dark' -- defaults dark to applicable color schemes
 opt.signcolumn = 'yes' -- show sign column tso that text doesn't shift
 
--- disable tilde on end of buffer: https://github.com/  neovim/neovim/pull/8546#issuecomment-643643758
-opt.fillchars = { eob = ' '}
-
--- backspace
-opt.backspace = "indent,eol,start" -- allow backspace on indent, eol, or insert mode start position
-
 -- Sync clipboard between OS and Neovim.
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`

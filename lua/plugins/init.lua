@@ -3,27 +3,58 @@
 --
 -- See the kickstart.nvim README for more information
 return {
+    --------------------------------
+    ----- Coding Configuration -----
+    --------------------------------
     {
-        "ellisonleao/gruvbox.nvim",
-        priority = 1000, -- Load before any other plugins
-    }, -- preferred colorscheme
-
-    {
-        "kylechui/nvim-surround",
-        version = "*",
-        event = "VeryLazy",
+        "folke/trouble.nvim",
         config = function()
-            require("nvim-surround").setup()
+            require("trouble").setup({
+                icons = false,
+            })
         end
-    }, -- Delete and change surroundings
+    },
 
     {
-        "nvim-lualine/lualine.nvim",
-        config = function()
-            require("plugins.config.lualine")
+        "nvim-treesitter/nvim-treesitter",
+        run = function()
+            local ts_update = require("nvim-treesitter.install").update({ with_sync = true})
         end,
-        dependencies = { "nvim-tree/nvim-web-devicons"}
-    }, -- Statusline
+        dependencies = {
+            "nvim-treesitter/playground",
+            "nvim-treesitter/nvim-treesitter-context"
+        }
+        -- config = function()
+        --     require("plugins.config.treesitter")
+        -- end,
+        -- build = ":TSUpdate",
+    }, -- Handles syntax parsing for files.}
+
+    {
+        "VonHeikemen/lsp-zero.nvim",
+        branch = "v3.x",
+        config = function()
+            require("plugins.config.lsp")
+        end,
+        dependencies = {
+            -- LSP Support
+            "neovim/nvim-lspconfig",
+            "williamboman/mason.nvim",
+            "williamboman/mason-lspconfig.nvim",
+
+            -- Autocompletion
+            "hrsh7th/nvim-cmp",
+            "hrsh7th/cmp-buffer",
+            "hrsh7th/cmp-path",
+            "saadparwaiz1/cmp_luasnip",
+            "hrsh7th/cmp-nvim-lsp",
+            "hrsh7th/cmp-nvim-lua",
+            
+            -- Snippets
+            "L3MON4D3/LuaSnip",
+            "rafamadriz/friendly-snippets"
+        }
+    },
 
     {
         "nvim-telescope/telescope.nvim",
@@ -39,88 +70,24 @@ return {
     }, --fuzzy finding
 
     {
-        "neovim/nvim-lspconfig",
-        dependencies = {
-            -- Automatically install LSPs to stdpath for neovim
-            { 
-                "williamboman/mason.nvim", 
-                config = function() 
-                    require("plugins.config.lsp.mason") 
-                end 
-            },
-            "williamboman/mason-lspconfig.nvim",
-            "WhoIsSethDaniel/mason-tool-installer.nvim",
-
-            -- Status updates for LSP
-            { "j-hui/fidget.nvim", tag = "legacy", opts = {} },
-
-            -- Additional lua configuration, makes nvim stuff cool
-            "folke/neodev.nvim"
-        }
+        "tpope/vim-fugative"
     },
 
+    --------------------------------
+    --- End Coding Configuration ---
+    --------------------------------
     {
-        -- Autocompletion
-        "hrsh7th/nvim-cmp",
-        dependencies = {
-            -- Snippet Engine & its associated nvim-cmp source
-            "L3MON4D3/LuaSnip",
-            "saadparwaiz1/cmp_luasnip",
-
-            -- Adds LSP completion capabilities
-            "hrsh7th/cmp-buffer", -- source for text in buffer
-            "hrsh7th/cmp-path", -- source for file system paths
-            "hrsh7th/cmp-nvim-lsp", -- autocompletion
-            "hrsh7th/cmp-nvim-lsp-signature-help", -- function param hints
-            "onsails/lspkind.nvim", -- vs-code like icons for autocompletion
-
-            -- Adds a number of user-friendly snippets
-            "rafamadriz/friendly-snippets",
-        },
-    },
+        "ellisonleao/gruvbox.nvim",
+        priority = 1000, -- Load before any other plugins
+    }, -- preferred colorscheme
 
     {
-        "nvim-treesitter/nvim-treesitter",
+        "nvim-lualine/lualine.nvim",
         config = function()
-            require("plugins.config.treesitter")
+            require("plugins.config.lualine")
         end,
-        dependencies = {
-            "JoosepAlviste/nvim-ts-context-commentstring", -- allow comments in mixed content files like svelte
-            "windwp/nvim-ts-autotag", -- autoclose html tags
-        },
-        build = ":TSUpdate",
-    }, -- Handles syntax parsing for files.
-
-    -- Enhanced LSP UIs
-    {
-        "glepnir/lspsaga.nvim",
-        event = "LspAttach",
-        config = function()
-            require("plugins.config.lsp.lspsaga")
-        end,
-        dependencies = {
-            "nvim-tree/nvim-web-devicons",
-            "nvim-treesitter/nvim-treesitter",
-        },
-    },
-
-    -- Commenting
-    -- gc to comment visual regions/lines
-    {
-        "terrortylor/nvim-comment",
-        config = function()
-            require("plugins.config.comments")
-        end,
-    },
-
-    -- Auto Closing
-    {
-        "windwp/nvim-autopairs",
-        event = "InsertEnter",
-        config = function()
-            require("plugins.config.autopairs")
-        end,
-    },
+        dependencies = { "nvim-tree/nvim-web-devicons"}
+    }, -- Statusline
 
     -- Git integration
     {
@@ -130,33 +97,32 @@ return {
         end,
     },
 
-    -- Diff files
+    -- Harpoon (Quick file switching)
     {
-        "sindrets/diffview.nvim",
+        "ThePrimeagen/harpoon",
         config = function()
-            require("plugins.config.diffview")
+            require("plugins.config.harpoon")
         end,
-        dependencies = {
+        dependencies = { 
             "nvim-lua/plenary.nvim"
-        }
+        },
     },
 
-        -- Harpoon (Quick file switching)
-        {
-            "ThePrimeagen/harpoon",
-            config = function()
-                require("plugins.config.harpoon")
-            end,
-            dependencies = { 
-                "nvim-lua/plenary.nvim"
-            },
-        },
-
-        {
-            "folke/which-key.nvim",
-            config = function()
-                require("plugins.config.whichkeys")    
-            end,
-            opts = {}
-    }
+    {
+        "folke/which-key.nvim",
+        config = function()
+            require("plugins.config.whichkeys")    
+        end,
+        opts = {}
+    },
+    --[[
+    {
+        "folke/noice.nvim",
+        config = function()
+            require("plugins.config.noice")
+        end,
+        dependencies = {
+            "MunifTanjim/nui.nvim"
+        }
+    } --]]  
 }
