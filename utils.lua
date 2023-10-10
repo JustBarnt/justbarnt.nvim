@@ -4,6 +4,7 @@ function Log(data)
     io.write(data)
     io.close(file)
 end
+
 function Status_Ok(name)
     local status, pkg = pcall(require, name)
     if not status then

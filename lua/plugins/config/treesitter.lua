@@ -1,6 +1,8 @@
-local status, treesitter = pcall(require, "nvim-treesitter.configs")
-if not status then
-    print("treesitter did not load")
+require "utils"
+local treesitter = Status_Ok("nvim-treesitter.configs")
+
+if treesitter == nil then
+    Log("\n Treesitter failed to load")
     return
 end
 
@@ -11,25 +13,25 @@ treesitter.setup({
     },
     -- Add languages to be installed here that you want installed for treesitter
     ensure_installed = { 
-        'c',
-        'cpp',
-        'lua',
-        'tsx',
+        "c",
+        "cpp",
+        "lua",
+        "tsx",
         "json",
         "html",
         "css",
         "gitignore",
         "yaml",
         "c_sharp",
-        'javascript',
-        'typescript',
-        'vimdoc',
-        'vim',
-        'svelte',
-        'regex',
-        'bash',
-        'markdown',
-        'markdown_inline'
+        "javascript",
+        "typescript",
+        "vimdoc",
+        "vim",
+        "svelte",
+        "regex",
+        "bash",
+        "markdown",
+        "markdown_inline"
 
     },
 
