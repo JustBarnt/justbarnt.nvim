@@ -14,7 +14,7 @@ end
 local servers = {
     emmet_language_server = { filetypes = { 'html', 'svelte', 'astro', 'javascriptreact', 'typescriptreact', 'xml' } },
     intelephense = {},
-    powershell_es = { bundle_path = "c:/PowerShellEditor/PowerShellEditorServices/" },
+    powershell_es = { bundle_path = vim.fn.stdpath('data') .. '/mason/packages/powershell-editor-services/' },
     svelte = {},
     tailwindcss = {},
     tsserver = {},
