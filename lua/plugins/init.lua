@@ -14,7 +14,6 @@ return {
             })
         end
     },
-        
     -- Accurate Code Syntax Highlighing
     {
         "nvim-treesitter/nvim-treesitter",
@@ -27,40 +26,35 @@ return {
         end,
         build = ":TSUpdate",
     }, -- Handles syntax parsing for files
-
-    {
-        "VonHeikemen/lsp-zero.nvim",
-        branch = "v3.x",
-        lazy = true,
-        config = function()
-            local lsp_zero = require('lsp-zero')
-
-            lsp_zero.on_attach(function(client, bufnr)
-                lsp_zero.default_keymaps({buffer = bufnr})
-            end)
-
-            require('lspconfig').powershell_es.setup({
-                bundle_path = "C:\\PowerShellEditor\\PowerShellEditorServices"
-            })
-            local lua_opts = lsp_zero.nvim_lua_ls()
-            require('lspconfig').lua_ls.setup(lua_opts)
-            lsp_zero.setup_servers({'cmake', 'emmet_language_server', 'eslint', 'html', 'intelephense', 'jsonls', 'lua_ls', 'svelte', 'tailwindcss', 'tsserver', })
-        end,
-    },
-
+    
+    -- Start of LSP Related plugins
+    {"williamboman/mason.nvim"},
+    {"williamboman/mason-lspconfig.nvim"},
     {
         'neovim/nvim-lspconfig',
         dependencies = {
             {'hrsh7th/cmp-nvim-lsp'},
         }
     },
+    {
+        "VonHeikemen/lsp-zero.nvim",
+        branch = "v3.x",
+        config = function()
+            require("plugins.config.lspzero")
+        end,
+    },
 
+    -- Start of Autocomplete plugins
     {
         'hrsh7th/nvim-cmp',
+        config = function()
+            require('plugins.config.nvim-cmp')
+        end,
         dependencies = {
-            {'L3MON4D3/LuaSnip'}  
+            {'L3MON4D3/LuaSnip'}
         },
     },
+    { "hrsh7th/cmp-buffer"},
 
     -- Fuzzy Finder
     {
@@ -74,13 +68,15 @@ return {
             { "nvim-telescope/telescope-fzf-native.nvim", build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build" },
             "nvim-tree/nvim-web-devicons"
         }, 
-    }, --fuzzy finding
-    
-    -- Git Integration
-    --{
-      --  "tpope/vim-fugative"
-    --},
+    },
 
+    -- Autopairs for brakets, quotes, etc.
+    {
+        "windwp/nvim-autopairs",
+        event = "InsertEnter",
+        opts = {}
+    },
+    
     --------------------------------
     --- End Coding Configuration ---
     --------------------------------
@@ -111,7 +107,7 @@ return {
         config = function()
             require("plugins.config.harpoon")
         end,
-        dependencies = { 
+        dependencies = {
             "nvim-lua/plenary.nvim"
         },
     },
@@ -120,18 +116,20 @@ return {
     {
         "folke/which-key.nvim",
         config = function()
-            require("plugins.config.whichkeys")    
+            require("plugins.config.whichkeys")
         end,
         opts = {}
     },
-    --[[
+
+    -- Prettier Command Line
     {
         "folke/noice.nvim",
+        event = 'VeryLazy',
         config = function()
             require("plugins.config.noice")
         end,
         dependencies = {
             "MunifTanjim/nui.nvim"
         }
-    } --]]  
+    }
 }

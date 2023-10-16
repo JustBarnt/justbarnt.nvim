@@ -1,59 +1,40 @@
--- Tests package to ensure it has loaded, else it will return nil
--- IMO Cleaner alt to declaring serveral status_[package] vars that with an if
--- conditional for each one.
-local all_good = function(name)
-    local status, pkg = pcall(require, name)
+require 'utils'
+local status, cmp = pcall(require, 'cmp')
 
-    if not status then
-        return { nil }
-    end
-
-    return pkg;
-end
-
-local cmp = all_good('cmp')
-local luasnip = all_good('luasnip')
-local lspkind = all_good('lspkind')
-local vscode = require("luasnip/loaders/from_vscode").lazy_load()
-
-if cmp == nil or luasnip == nil or lspkind == nil then
-    print('One or more packages in nvim-cmp.lua failed to load')
+if not status then
+    Log('cmp failed to load')
     return
 end
 
+
+local cmp_action = require('lsp-zero').cmp_action()
 cmp.setup({
-    snippet = {
-        expand = function()
-            luasnip.lsp_expand(args.body)
-        end,
+    preselect = 'item',
+    completion = {
+        completeopt = "menu,menuone,noinsert",
     },
-    mapping = cmp.mapping.preset.insert {
-        ['<C-n>'] = cmp.mapping.select_next_item(),
-        ['<C-p>'] = cmp.mapping.select_prev_item(),
-        ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-        ['<C-f>'] = cmp.mapping.scroll_docs(4),
-        ['<C-Space>'] = cmp.mapping.complete {},
-        ['<CR>'] = cmp.mapping.confirm {
-            behavior = cmp.ConfirmBehavior.Replace,
-            select = true,
-        },
-        ['<Tab>'] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-              cmp.select_next_item()
-            elseif luasnip.expand_or_locally_jumpable() then
-              luasnip.expand_or_jump()
-            else
-              fallback()
-            end
-        end, { 'i', 's' }),
-        ['<S-Tab>'] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-              cmp.select_prev_item()
-            elseif luasnip.locally_jumpable(-1) then
-              luasnip.jump(-1)
-            else
-              fallback()
-            end
-        end, { 'i', 's' }),
+    sources = {
+        { name = 'nvim_lsp' },
+        { name = 'buffer' },
+    },
+    mapping = {
+        -- Move up and down completion menu
+        ['<C-d>'] = cmp.mapping.select_next_item({behavior = 'select'}),
+        ['<C-u>'] = cmp.mapping.select_prev_item({behavior = 'select'}),
+        -- Jump through available items 4 at a time
+        ['<C-p>'] = cmp.mapping.scroll_docs(-4),
+        ['<C-n>'] = cmp.mapping.scroll_docs(4),
+        -- Insert currently selected item\
+        ['<CR>'] = cmp.mapping.confirm({ select = true }),
+        -- Enables tabbing through items, if in the middle of a word it will autocomplete it
+        ['<Tab>'] = cmp_action.tab_complete(),
+        ['<S-Tab>'] = cmp_action.select_prev_or_fallback(),
+        -- Invoke Autocomplete menu manuall
+        ['<C-Space>'] = cmp.mapping.complete(),
+    },
+    snippet = {
+        expand = function(args)
+            require('luasnip').lsp_expand(args.body)
+        end,
     },
 })
