@@ -14,7 +14,7 @@ end
 local servers = {
     emmet_language_server = { filetypes = { 'html', 'svelte', 'astro', 'javascriptreact', 'typescriptreact', 'xml' } },
     intelephense = {},
-    powershell_es = { bundle_path = vim.fn.stdpath('data') .. '/mason/packages/powershell-editor-services/' },
+    powershell_es = {},
     svelte = {},
     tailwindcss = {},
     tsserver = {},
@@ -35,7 +35,7 @@ mason_lspconfig.setup({
         lsp_zero.default_setup,
         powershell_es = function()
             require('lspconfig').powershell_es.setup({
-                bundle_path = "C:\\PowerShellEditor\\PowerShellEditorServices"
+                cmd = { "pwsh", "-NoLogo", "-NoProfile", "-Command", vim.fn.stdpath('data') .. "/mason/packages/powershell-editor-services" }
             })
         end,
         lua_ls = function()
