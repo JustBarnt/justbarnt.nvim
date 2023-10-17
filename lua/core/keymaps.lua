@@ -10,7 +10,6 @@ local init = function()
 
     -- Delete a single char without copying it into the register
     keymap.set("n", "x", '"_x')
-
     -- Fix keybind descrepancy between nvims builtin matchit (%) and nvim-comment plugin
     keymap.set("n", "_gc", "<cmd><C-U>call CommentOperator(visualmode())<CR>")
 
@@ -32,16 +31,10 @@ local init = function()
     keymap.set("n", "<leader>x", "<cmd>bd<CR>", { desc = "Close Current Buffer" })
     keymap.set("n", "<leader>X", "<cmd>bufdo bd<CR>", { desc = "Close All Buffers" })
 
-    -- tab management
-    keymap.set("n", "<leader>to", "<cmd>tabnew<CR>", { desc = "Tab Open (new)" })
-    keymap.set("n", "<leader>tx", "<cmd>tabclose<CR>", { desc = "Tab X (close)" })
-    keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Tab Next" })
-    keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Tab Previous" })
-
     -- Go back to File Explorer.
     -- I don't use Neotree becuase I'll be using harpoon
     keymap.set("n", "<leader>pv", vim.cmd.Ex, { desc = "Show File Explorer" })
-    
+
     -- Source files
     keymap.set("n", "<leader><leader>", function()
         vim.cmd("so")
