@@ -5,6 +5,8 @@ opt.number = true
 opt.relativenumber = true
 opt.numberwidth = 2
 
+opt.title = true
+
 -- Tab/Spacing settings
 opt.tabstop = 4
 opt.softtabstop = 4
@@ -12,6 +14,7 @@ opt.shiftwidth = 4
 opt.expandtab = true
 opt.autoindent = true
 opt.smartindent = true
+opt.rtp:append("C:/Program Files/Neovim/share/nvim-qt/runtime/")
 
 -- line wrapping
 opt.wrap = true
