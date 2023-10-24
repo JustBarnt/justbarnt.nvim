@@ -1,5 +1,13 @@
 local keymap = vim.keymap
 local g = vim.g -- global settings
+
+local nmap = function(keys, func, desc)
+    if desc then
+        desc = "LSP:" .. desc
+    end
+
+    keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
+end
 -------------------------------------
 --- General Keymaps (Run on Init) ---
 -------------------------------------
@@ -52,7 +60,7 @@ local plugins = function()
     -- diff view
     keymap.set("n", "<leader>vd", ":DiffviewOpen<CR>", { desc = "View Diff" })
     keymap.set("n", "<leader>nh", ":DiffviewFileHistory %<CR>", { desc = "View History" })
-
+ 
     -- Comment
     -- TODO
 end

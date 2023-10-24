@@ -131,5 +131,15 @@ return {
         dependencies = {
             "MunifTanjim/nui.nvim"
         }
+    },
+    {
+        "kylechui/nvim-surround",
+        version = "*",
+        event = "VeryLazy",
+        config = function()
+            require("nvim-surround").setup({
+                -- Configuration goes here, or leave empty for the default settings.
+            })
+        end,
     }
 }

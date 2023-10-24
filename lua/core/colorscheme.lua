@@ -19,19 +19,18 @@ local customHighlights = {
 }
 
 require("gruvbox").setup({
-    transparent_mode = true, 
-    undercurl = true,
-    underline = true,
-    bold = true,
+    transparent_mode = true,
+    undercurl = false,
+    underline = false,
+    bold = false,
     italic = {
-        strings = true,
-        comments = true,
-        operators = true,
-        folds = true
+        strings = false,
+        comments = false,
+        operators = false,
+        folds = false
     },
-    strikethrough = true,
-    inverse = true, -- invert bg for search, diffs, statuslines, and errors
-    contrast = "soft",
+    invert_selection = false,
+    strikethrough = false,
     palette_overrides = customColors,
     overrides = customHighlights,
 })
