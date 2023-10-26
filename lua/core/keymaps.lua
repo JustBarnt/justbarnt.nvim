@@ -16,6 +16,8 @@ local init = function()
     g.mapleader = " "
     g.maplocalleader = " "
 
+    keymap.set("n", "<leader>sc", ':let @/ = ""<CR>');
+
     -- Delete a single char without copying it into the register
     keymap.set("n", "x", '"_x')
     -- Fix keybind descrepancy between nvims builtin matchit (%) and nvim-comment plugin
