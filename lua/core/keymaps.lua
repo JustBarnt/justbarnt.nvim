@@ -44,9 +44,13 @@ local init = function()
     keymap.set("n", "<leader>pv", vim.cmd.Ex, { desc = "Show File Explorer" })
 
     -- Source files
-    keymap.set("n", "<leader><leader>", function()
+    keymap.set("n", "<leader>S", function()
         vim.cmd("so")
     end)
+
+    -- EasyAlign
+    keymap.set("x", "ga", vim.cmd.EasyAlign)
+    keymap.set("n", "ga", vim.cmd.EasyAlign)
 end
 
 ----------------------

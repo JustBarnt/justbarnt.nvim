@@ -84,7 +84,11 @@ return {
         "ellisonleao/gruvbox.nvim",
         priority = 1000, -- Load before any other plugins
     }, -- preferred colorscheme
-
+    {
+        "folke/tokyonight.nvim",
+        lazy = false,
+        priority =  1000,
+    },
     {
         "nvim-lualine/lualine.nvim",
         config = function()
@@ -141,5 +145,27 @@ return {
                 -- Configuration goes here, or leave empty for the default settings.
             })
         end,
+    },
+    "jidn/vim-dbml",
+    {
+        "jinh0/eyeliner.nvim",
+        config = function()
+            require("plugins.config.eyeliner")
+        end,
+    },
+    {
+        "trmckay/based.nvim",
+        config = function()
+            require("plugins.config.based")
+        end,
+    },
+    "junegunn/vim-easy-align",
+    -- install without yarn or npm
+    {
+        "iamcco/markdown-preview.nvim",
+        cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+        ft = { "markdown" },
+        build = function() vim.fn["mkdp#util#install"]() end,
     }
 }
+

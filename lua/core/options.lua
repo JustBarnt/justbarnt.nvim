@@ -1,4 +1,8 @@
 local opt = vim.opt -- for conciseness
+local g = vim.g
+
+-- markdown-preview
+
 
 -- Line numbers and relative line numbers for easy line jumping
 opt.number = true
