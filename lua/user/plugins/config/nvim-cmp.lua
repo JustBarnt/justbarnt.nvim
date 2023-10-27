@@ -1,8 +1,7 @@
-require 'utils'
 local status, cmp = pcall(require, 'cmp')
 
 if not status then
-    Log('cmp failed to load')
+    vim.print('cmp failed to load')
     return
 end
 

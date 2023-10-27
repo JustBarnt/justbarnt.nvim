@@ -22,36 +22,36 @@ return {
             "nvim-treesitter/nvim-treesitter-context"
         },
         config = function()
-            require("plugins.config.treesitter")
+            require("user.plugins.config.treesitter")
         end,
         build = ":TSUpdate",
     }, -- Handles syntax parsing for files
-    
+
     -- Start of LSP Related plugins
     {"williamboman/mason.nvim"},
     {"williamboman/mason-lspconfig.nvim"},
     {
-        'neovim/nvim-lspconfig',
+        "neovim/nvim-lspconfig",
         dependencies = {
-            {'hrsh7th/cmp-nvim-lsp'},
+            {"hrsh7th/cmp-nvim-lsp"},
         }
     },
     {
         "VonHeikemen/lsp-zero.nvim",
         branch = "v3.x",
         config = function()
-            require("plugins.config.lspzero")
+            require("user.plugins.config.lspzero")
         end,
     },
 
     -- Start of Autocomplete plugins
     {
-        'hrsh7th/nvim-cmp',
+        "hrsh7th/nvim-cmp",
         config = function()
-            require('plugins.config.nvim-cmp')
+            require("user.plugins.config.nvim-cmp")
         end,
         dependencies = {
-            {'L3MON4D3/LuaSnip'}
+            {"L3MON4D3/LuaSnip"}
         },
     },
     { "hrsh7th/cmp-buffer"},
@@ -61,13 +61,13 @@ return {
         "nvim-telescope/telescope.nvim",
         branch = "0.1.x",
         config = function()
-            require("plugins.config.telescope")
+            require("user.plugins.config.telescope")
         end,
-        dependencies = { 
+        dependencies = {
             "nvim-lua/plenary.nvim",
             { "nvim-telescope/telescope-fzf-native.nvim", build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build" },
             "nvim-tree/nvim-web-devicons"
-        }, 
+        },
     },
 
     -- Autopairs for brakets, quotes, etc.
@@ -76,7 +76,12 @@ return {
         event = "InsertEnter",
         opts = {}
     },
-    
+    {
+        "akinsho/toggleterm.nvim",
+        version = "*",
+        opts = {
+        }
+    },
     --------------------------------
     --- End Coding Configuration ---
     --------------------------------
@@ -92,7 +97,7 @@ return {
     {
         "nvim-lualine/lualine.nvim",
         config = function()
-            require("plugins.config.lualine")
+            require("user.plugins.config.lualine")
         end,
         dependencies = { "nvim-tree/nvim-web-devicons"}
     }, -- Statusline
@@ -101,7 +106,7 @@ return {
     {
         "lewis6991/gitsigns.nvim",
         config = function()
-            require("plugins.config.gitsigns")
+            require("user.plugins.config.gitsigns")
         end,
     },
 
@@ -109,7 +114,7 @@ return {
     {
         "ThePrimeagen/harpoon",
         config = function()
-            require("plugins.config.harpoon")
+            require("user.plugins.config.harpoon")
         end,
         dependencies = {
             "nvim-lua/plenary.nvim"
@@ -120,7 +125,7 @@ return {
     {
         "folke/which-key.nvim",
         config = function()
-            require("plugins.config.whichkeys")
+            require("user.plugins.config.whichkeys")
         end,
         opts = {}
     },
@@ -130,7 +135,7 @@ return {
         "folke/noice.nvim",
         event = 'VeryLazy',
         config = function()
-            require("plugins.config.noice")
+            require("user.plugins.config.noice")
         end,
         dependencies = {
             "MunifTanjim/nui.nvim"
@@ -150,13 +155,13 @@ return {
     {
         "jinh0/eyeliner.nvim",
         config = function()
-            require("plugins.config.eyeliner")
+            require("user.plugins.config.eyeliner")
         end,
     },
     {
         "trmckay/based.nvim",
         config = function()
-            require("plugins.config.based")
+            require("user.plugins.config.based")
         end,
     },
     "junegunn/vim-easy-align",

@@ -1,18 +1,10 @@
-require "utils"
-local treesitter = Status_Ok("nvim-treesitter.configs")
-
-if treesitter == nil then
-    Log("\n Treesitter failed to load")
-    return
-end
-
-treesitter.setup({
+require("nvim-treesitter.configs").setup({
     context_commentstring = {
         enable = true,
         enable_autocmd = false,
     },
     -- Add languages to be installed here that you want installed for treesitter
-    ensure_installed = { 
+    ensure_installed = {
         "c",
         "cpp",
         "lua",

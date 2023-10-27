@@ -1,13 +1,9 @@
-require 'utils'
+local status_mason, mason = pcall(require, 'mason')
+local status_mason_lsp, mason_lspconfig = pcall(require,'mason-lspconfig')
+local status_lsp, lsp_zero = pcall(require, 'lsp-zero')
 
-local mason = require('mason')
-local mason_lspconfig = require('mason-lspconfig')
-local lsp_zero = Status_Ok('lsp-zero')
-
-
-if lsp_zero == nil or mason == nil or mason_lspconfig == nil then
-    Log('One or more packages in lspzero.lua failed to load')
-    print('One or more packages in lspzero.lua failed to load')
+if not status_mason or not status_mason_lsp or not status_lsp then
+    vim.print('One or more packages in lspzero.lua failed to load')
     return
 end
 
