@@ -14,6 +14,7 @@ local servers = {
     svelte = {},
     tailwindcss = {},
     tsserver = {},
+    sqlls = { filetypes = { "sql", "mysql" } },
     html = { filetypes = { 'html', 'twig', 'hbs' } },
     lua_ls = {},
 }
@@ -95,6 +96,15 @@ mason_lspconfig.setup({
                     }
                 }
             })
+        end,
+        sqlls = function()
+            require('lspconfig').sqlls.setup({
+                cmd = { vim.fn.stdpath('data') .. "/mason/packages/sqlls/node_modules/.bin/sql-language-server", "up", "--method", "stdio" },
+                single_file_support  = true,
+                root_dir = function(fname)
+                    return require('lspconfig').util.root_pattern '*.sql'(fname)
+                end,
+           })
         end,
     }
 })

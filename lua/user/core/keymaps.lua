@@ -36,7 +36,8 @@ local init = function()
     nmap('n','<C-l>', [[<Cmd>wincmd l<CR>]], "Move Pane: Right")
 
 
-
+    -- Easy return to normal mode
+    keymap.set("i", "jk", "<ESC>", {silent = true, desc = "Return to normal mode"})
 
     -- Move Line up and move line down in VISUAL MODE
     keymap.set("v", "J", ":m '>+1<CR>gv=gv", { silent = true })

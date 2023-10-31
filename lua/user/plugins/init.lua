@@ -70,7 +70,7 @@ return {
         },
     },
 
-    -- Autopairs for brakets, quotes, etc.
+        -- Autopairs for brakets, quotes, etc.
     {
         "windwp/nvim-autopairs",
         event = "InsertEnter",
