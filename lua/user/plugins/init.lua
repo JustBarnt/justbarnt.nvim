@@ -66,11 +66,10 @@ return {
         dependencies = {
             "nvim-lua/plenary.nvim",
             { "nvim-telescope/telescope-fzf-native.nvim", build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build" },
-            "nvim-tree/nvim-web-devicons"
+            "nvim-tree/nvim-web-devicons",
         },
     },
-
-        -- Autopairs for brakets, quotes, etc.
+    -- Autopairs for brakets, quotes, etc.
     {
         "windwp/nvim-autopairs",
         event = "InsertEnter",

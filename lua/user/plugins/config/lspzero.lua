@@ -96,8 +96,7 @@ mason_lspconfig.setup({
                     }
                 }
             })
-        end,
-        sqlls = function()
+        end,        --[[sqlls = function()
             require('lspconfig').sqlls.setup({
                 cmd = { vim.fn.stdpath('data') .. "/mason/packages/sqlls/node_modules/.bin/sql-language-server", "up", "--method", "stdio" },
                 single_file_support  = true,
@@ -105,6 +104,6 @@ mason_lspconfig.setup({
                     return require('lspconfig').util.root_pattern '*.sql'(fname)
                 end,
            })
-        end,
+        end,]]
     }
 })

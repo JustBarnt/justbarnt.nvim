@@ -10,8 +10,8 @@ if not bStatus then
     return
 end
 
-local tStatus, themes = pcall(require, "telescope.themes")
-if not tStatus then
+local tThemes, themes = pcall(require, "telescope.themes")
+if not tThemes then
     print("telescope builtins did not load")
     return
 end
