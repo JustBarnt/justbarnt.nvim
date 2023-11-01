@@ -170,6 +170,14 @@ return {
         cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
         ft = { "markdown" },
         build = function() vim.fn["mkdp#util#install"]() end,
+    },
+
+    -- Discord Rich Presence
+    {
+        "andweeb/presence.nvim",
+        config = function()
+            require('user.plugins.config.discord')
+        end,
     }
 }
 
