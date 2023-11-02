@@ -6,12 +6,16 @@ require("nvim-treesitter.configs").setup({
     -- Add languages to be installed here that you want installed for treesitter
     ensure_installed = {
         "c",
+        "cmake",
         "cpp",
         "lua",
         "tsx",
         "json",
         "html",
         "css",
+        "gitcommit",
+        "php",
+        "sql",
         "gitignore",
         "yaml",
         "c_sharp",

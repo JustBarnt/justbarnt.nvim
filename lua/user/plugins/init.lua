@@ -81,6 +81,40 @@ return {
         opts = {
         }
     },
+    {
+        "smjonas/inc-rename.nvim",
+        cmd = "IncRename",
+        config = true,
+    },
+    --[[Plugins to play around with
+    {
+        "Wansmer/treesj",
+        keys = {
+            { "J", "<cmd>TSJToggle<cr>", desc = "Join Toggle" },
+        },
+        opts = { use_default_keymaps = false, max_join_length = 150 },
+    },
+
+    {
+        "cshuaimin/ssr.nvim",
+        keys = {
+            {
+                "<leader>sR",
+                function()
+                    require("ssr").open()
+                end,
+                mode = { "n", "x" },
+                desc = "Structural Replace",
+            },
+        },
+    },
+    --]]
+    {
+        "zbirenbaum/copilot.lua",
+        opts = {
+            filetypes = { ["*"] = true },
+        }
+    },
     --------------------------------
     --- End Coding Configuration ---
     --------------------------------
@@ -128,7 +162,13 @@ return {
         end,
         opts = {}
     },
-
+    {
+        "2kabhishek/nerdy.nvim",
+        cmd = "Nerdy",
+        keys = {
+            { "<leader>ci", "<cmd>Nerdy<CR>", desc = "Pick Icon"},
+        }
+    },
     -- Prettier Command Line
     {
         "folke/noice.nvim",

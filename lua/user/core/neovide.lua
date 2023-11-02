@@ -3,7 +3,8 @@ local alpha = function()
 end
 
 -- Set font for neovide. Ligatures are enabled by default.
-vim.o.guifont = "CaskaydiaCove NF:h13"
+vim.o.guifont = "CaskaydiaCove NF:h34"
+vim.g.neovide_scale_factor = 0.38
 
 --Configured neovide background opacity
 vim.g.transparency = 0.95
