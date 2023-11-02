@@ -1,11 +1,4 @@
--- You can add your own plugins here or in other files in this directory!
---  I promise not to create any merge conflicts in this directory :)
---
--- See the kickstart.nvim README for more information
 return {
-    --------------------------------
-    ----- Coding Configuration -----
-    --------------------------------
     {
         "folke/trouble.nvim",
         config = function()
@@ -32,8 +25,10 @@ return {
     {"williamboman/mason-lspconfig.nvim"},
     {
         "neovim/nvim-lspconfig",
+        event = { "BufReadPre", "BufNewFile" },
         dependencies = {
             {"hrsh7th/cmp-nvim-lsp"},
+            {"pmizio/typescript-tools.nvim"}
         }
     },
     {
@@ -86,100 +81,6 @@ return {
         cmd = "IncRename",
         config = true,
     },
-    --[[Plugins to play around with
-    {
-        "Wansmer/treesj",
-        keys = {
-            { "J", "<cmd>TSJToggle<cr>", desc = "Join Toggle" },
-        },
-        opts = { use_default_keymaps = false, max_join_length = 150 },
-    },
-
-    {
-        "cshuaimin/ssr.nvim",
-        keys = {
-            {
-                "<leader>sR",
-                function()
-                    require("ssr").open()
-                end,
-                mode = { "n", "x" },
-                desc = "Structural Replace",
-            },
-        },
-    },
-    --]]
-    {
-        "zbirenbaum/copilot.lua",
-        opts = {
-            filetypes = { ["*"] = true },
-        }
-    },
-    --------------------------------
-    --- End Coding Configuration ---
-    --------------------------------
-    {
-        "ellisonleao/gruvbox.nvim",
-        priority = 1000, -- Load before any other plugins
-    }, -- preferred colorscheme
-    {
-        "folke/tokyonight.nvim",
-        lazy = false,
-        priority =  1000,
-    },
-    {
-        "nvim-lualine/lualine.nvim",
-        config = function()
-            require("user.plugins.config.lualine")
-        end,
-        dependencies = { "nvim-tree/nvim-web-devicons"}
-    }, -- Statusline
-
-    -- Git Signs for changes, deletes, etc.
-    {
-        "lewis6991/gitsigns.nvim",
-        config = function()
-            require("user.plugins.config.gitsigns")
-        end,
-    },
-
-    -- Harpoon (Quick file switching)
-    {
-        "ThePrimeagen/harpoon",
-        config = function()
-            require("user.plugins.config.harpoon")
-        end,
-        dependencies = {
-            "nvim-lua/plenary.nvim"
-        },
-    },
-
-    -- Give visible guide to keybinds paired with Mapleader
-    {
-        "folke/which-key.nvim",
-        config = function()
-            require("user.plugins.config.whichkeys")
-        end,
-        opts = {}
-    },
-    {
-        "2kabhishek/nerdy.nvim",
-        cmd = "Nerdy",
-        keys = {
-            { "<leader>ci", "<cmd>Nerdy<CR>", desc = "Pick Icon"},
-        }
-    },
-    -- Prettier Command Line
-    {
-        "folke/noice.nvim",
-        event = 'VeryLazy',
-        config = function()
-            require("user.plugins.config.noice")
-        end,
-        dependencies = {
-            "MunifTanjim/nui.nvim"
-        }
-    },
     {
         "kylechui/nvim-surround",
         version = "*",
@@ -211,13 +112,33 @@ return {
         ft = { "markdown" },
         build = function() vim.fn["mkdp#util#install"]() end,
     },
+    --[[Plugins to play around with
+{
+"Wansmer/treesj",
+keys = {
+{ "J", "<cmd>TSJToggle<cr>", desc = "Join Toggle" },
+},
+opts = { use_default_keymaps = false, max_join_length = 150 },
+},
 
-    -- Discord Rich Presence
+{
+"cshuaimin/ssr.nvim",
+keys = {
+{
+"<leader>sR",
+function()
+require("ssr").open()
+end,
+mode = { "n", "x" },
+desc = "Structural Replace",
+},
+},
+},
+--]]
     {
-        "andweeb/presence.nvim",
-        config = function()
-            require('user.plugins.config.discord')
-        end,
+        "zbirenbaum/copilot.lua",
+        opts = {
+            filetypes = { ["*"] = true },
+        }
     }
 }
-
