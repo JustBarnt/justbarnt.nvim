@@ -60,7 +60,18 @@ return {
         end,
         dependencies = {
             "nvim-lua/plenary.nvim",
-            { "nvim-telescope/telescope-fzf-native.nvim", build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build" },
+            {
+                "nvim-telescope/telescope-fzf-native.nvim",
+                build = function()
+                    local os_name = vim.loop.os_uname().sysname;
+
+                    if os_name == "Windows_NT" then
+                        return "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build"
+                    elseif os_name == "Darwin" then
+                        return "make"
+                    end
+                end,
+            },
             "nvim-tree/nvim-web-devicons",
         },
     },
