@@ -41,11 +41,4 @@ return {
             { "<leader>ci", "<cmd>Nerdy<CR>", desc = "Pick Icon"},
         }
     },
-        -- Discord Rich Presence
-    {
-        "andweeb/presence.nvim",
-        config = function()
-            require('user.plugins.config.discord')
-        end,
-    }
 }

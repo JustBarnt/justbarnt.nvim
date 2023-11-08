@@ -15,8 +15,8 @@ noice.setup({
         }
     },
     format = {
-        telescope = require('telescope').load_extension('noice'),
-        telescope_preview = require('telescope').load_extension('noice')
+        --telescope = require('telescope').load_extension('noice'),
+        --telescope_preview = require('telescope').load_extension('noice')
     },
     lsp = {
         override = {

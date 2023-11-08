@@ -62,15 +62,7 @@ return {
             "nvim-lua/plenary.nvim",
             {
                 "nvim-telescope/telescope-fzf-native.nvim",
-                build = function()
-                    local os_name = vim.loop.os_uname().sysname;
-
-                    if os_name == "Windows_NT" then
-                        return "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build"
-                    elseif os_name == "Darwin" then
-                        return "make"
-                    end
-                end,
+                build  = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build"
             },
             "nvim-tree/nvim-web-devicons",
         },
@@ -123,29 +115,6 @@ return {
         ft = { "markdown" },
         build = function() vim.fn["mkdp#util#install"]() end,
     },
-    --[[Plugins to play around with
-{
-"Wansmer/treesj",
-keys = {
-{ "J", "<cmd>TSJToggle<cr>", desc = "Join Toggle" },
-},
-opts = { use_default_keymaps = false, max_join_length = 150 },
-},
-
-{
-"cshuaimin/ssr.nvim",
-keys = {
-{
-"<leader>sR",
-function()
-require("ssr").open()
-end,
-mode = { "n", "x" },
-desc = "Structural Replace",
-},
-},
-},
---]]
     {
         "zbirenbaum/copilot.lua",
         opts = {
