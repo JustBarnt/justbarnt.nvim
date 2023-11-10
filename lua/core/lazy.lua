@@ -21,7 +21,26 @@ vim.opt.rtp:prepend(lazypath)
 --    as they will be available in your neovim runtime.
 --
 
-require('lazy').setup("user.plugins", {
+require('lazy').setup("plugins", {
+    dev = {
+        path = "~/plugins",
+        fallback = false,
+    },
+    ui = {
+        icons = {
+            cmd = "",
+            config = "",
+            event = "",
+            ft = "",
+            init = "",
+            keys = "",
+            plugin = "",
+            runtime = "",
+            source = "",
+            start = "",
+            task = "",
+        }
+    },
     performance = {
         rtp = {
             disable_plugins = {

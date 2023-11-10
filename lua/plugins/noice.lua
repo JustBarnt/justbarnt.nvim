@@ -5,7 +5,7 @@ if not vim.g.vscode then
             "folke/noice.nvim",
             event = 'VeryLazy',
             config = function()
-                require("user.plugins.config.noice")
+                require("plugins.config.noice")
             end,
             dependencies = {
                 "MunifTanjim/nui.nvim"

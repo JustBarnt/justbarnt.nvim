@@ -2,7 +2,7 @@ return {
     {
         "nvim-lualine/lualine.nvim",
         config = function()
-            require("user.plugins.config.lualine")
+            --require("plugins.config.lualine")
         end,
         dependencies = { "nvim-tree/nvim-web-devicons"}
     }, -- Statusline
@@ -11,7 +11,7 @@ return {
     {
         "lewis6991/gitsigns.nvim",
         config = function()
-            require("user.plugins.config.gitsigns")
+            require("plugins.config.gitsigns")
         end,
     },
 
@@ -19,7 +19,7 @@ return {
     {
         "ThePrimeagen/harpoon",
         config = function()
-            require("user.plugins.config.harpoon")
+            require("plugins.config.harpoon")
         end,
         dependencies = {
             "nvim-lua/plenary.nvim"
@@ -30,7 +30,7 @@ return {
     {
         "folke/which-key.nvim",
         config = function()
-            require("user.plugins.config.whichkeys")
+            require("plugins.config.whichkeys")
         end,
         opts = {}
     },

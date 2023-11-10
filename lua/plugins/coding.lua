@@ -15,7 +15,7 @@ return {
             "nvim-treesitter/nvim-treesitter-context"
         },
         config = function()
-            require("user.plugins.config.treesitter")
+            require("plugins.config.treesitter")
         end,
         build = ":TSUpdate",
     }, -- Handles syntax parsing for files
@@ -35,7 +35,7 @@ return {
         "VonHeikemen/lsp-zero.nvim",
         branch = "v3.x",
         config = function()
-            require("user.plugins.config.lspzero")
+            require("plugins.config.lspzero")
         end,
     },
 
@@ -43,7 +43,7 @@ return {
     {
         "hrsh7th/nvim-cmp",
         config = function()
-            require("user.plugins.config.nvim-cmp")
+            require("plugins.config.nvim-cmp")
         end,
         dependencies = {
             {"L3MON4D3/LuaSnip"}
@@ -52,11 +52,11 @@ return {
     { "hrsh7th/cmp-buffer"},
 
     -- Fuzzy Finder
-    {
+    --[[{
         "nvim-telescope/telescope.nvim",
         branch = "0.1.x",
         config = function()
-            require("user.plugins.config.telescope")
+            require("plugins.config.telescope")
         end,
         dependencies = {
             "nvim-lua/plenary.nvim",
@@ -66,7 +66,7 @@ return {
             },
             "nvim-tree/nvim-web-devicons",
         },
-    },
+    },]]
     -- Autopairs for brakets, quotes, etc.
     {
         "windwp/nvim-autopairs",
@@ -98,13 +98,13 @@ return {
     {
         "jinh0/eyeliner.nvim",
         config = function()
-            require("user.plugins.config.eyeliner")
+            require("plugins.config.eyeliner")
         end,
     },
     {
         "trmckay/based.nvim",
         config = function()
-            require("user.plugins.config.based")
+            require("plugins.config.based")
         end,
     },
     "junegunn/vim-easy-align",
@@ -115,6 +115,29 @@ return {
         ft = { "markdown" },
         build = function() vim.fn["mkdp#util#install"]() end,
     },
+    --[[Plugins to play around with
+{
+"Wansmer/treesj",
+keys = {
+{ "J", "<cmd>TSJToggle<cr>", desc = "Join Toggle" },
+},
+opts = { use_default_keymaps = false, max_join_length = 150 },
+},
+
+{
+"cshuaimin/ssr.nvim",
+keys = {
+{
+"<leader>sR",
+function()
+require("ssr").open()
+end,
+mode = { "n", "x" },
+desc = "Structural Replace",
+},
+},
+},
+--]]
     {
         "zbirenbaum/copilot.lua",
         opts = {
