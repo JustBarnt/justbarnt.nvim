@@ -52,7 +52,7 @@ return {
     { "hrsh7th/cmp-buffer"},
 
     -- Fuzzy Finder
-    --[[{
+    {
         "nvim-telescope/telescope.nvim",
         branch = "0.1.x",
         config = function()
@@ -66,7 +66,7 @@ return {
             },
             "nvim-tree/nvim-web-devicons",
         },
-    },]]
+    },
     -- Autopairs for brakets, quotes, etc.
     {
         "windwp/nvim-autopairs",

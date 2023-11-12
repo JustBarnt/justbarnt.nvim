@@ -21,7 +21,7 @@ vim.opt.rtp:prepend(lazypath)
 --    as they will be available in your neovim runtime.
 --
 
-require('lazy').setup("plugins", {
+require('lazy').setup('plugins', {
     dev = {
         path = "~/plugins",
         fallback = false,
