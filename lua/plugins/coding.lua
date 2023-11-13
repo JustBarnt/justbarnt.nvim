@@ -138,10 +138,4 @@ desc = "Structural Replace",
 },
 },
 --]]
-    {
-        "zbirenbaum/copilot.lua",
-        opts = {
-            filetypes = { ["*"] = true },
-        }
-    }
 }

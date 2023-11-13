@@ -1,3 +1,16 @@
+local maxFileSize = 40 * 1024 * 1024 -- 40mb in bytes, subject to be changedtick
+local file_size
+local function is_large_file()
+    file_size = vim.fn.getfsize(vim.fn.expand("%"))
+
+    return file_size > maxFileSize
+end
+
+if is_large_file() then
+    vim.notify("Telescope has been disabled to due large file size")
+    return
+end
+
 local status, telescope = pcall(require, "telescope")
 if not status then
     print("telescope did not load")

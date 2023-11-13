@@ -1,3 +1,15 @@
+local maxFileSize = 40 * 1024 * 1024 -- 40mb in bytes, subject to be changed
+local file_size
+local function is_large_file()
+    file_size = vim.fn.getfsize(vim.fn.expand("%"))
+    return file_size > maxFileSize
+end
+
+if is_large_file() then
+    vim.notify("Autocompletion has been disabled due to large file size", vim.log.levels.INFO, { timeout = 3000} )
+    return
+end
+
 local status, cmp = pcall(require, 'cmp')
 
 if not status then
