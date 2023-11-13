@@ -2,8 +2,14 @@
 - [X] LazyVim package manager
 - [X] Keymaps (will just copy from previous mappings)
 - [X] Colorscheme (sorry not sorry)
-- [ ] Treesitter
+- [X] Treesitter
+- [ ] Telescope
+    - telescope-file-browser
+    - telescope-hop
+    - telescope-ui-select
+    - AckslD/nvim-neoclip.lua
 - [ ] Harpoon
+    - https://github.com/tjdevries/config_manager/blob/master/xdg_config/nvim/lua/custom/plugins/harpoon.lua
 - [ ] Language Servers
 - [ ] Add nvim-surround
 - [ ] Autopairs
