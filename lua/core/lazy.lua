@@ -22,10 +22,6 @@ vim.opt.rtp:prepend(lazypath)
 --
 
 require('lazy').setup('plugins', {
-    dev = {
-        path = "~/plugins",
-        fallback = false,
-    },
     ui = {
         icons = {
             cmd = "",

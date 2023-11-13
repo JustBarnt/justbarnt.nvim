@@ -1,6 +1,6 @@
-# TODO
-## CREATE DETAILED README
-
-Configuration layout inspired by: https://github.com/tannerellen/.dotfiles/blob/main/nvim/.config/nvim
-
-Looking to how ThePrimeagen handles LSP
+# TODO in Order
+- [X] LazyVim package manager
+- [ ] Colorscheme (sorry not sorry)
+- [ ] Treesitter
+- [ ] Harpoon
+- [ ] Language Servers
