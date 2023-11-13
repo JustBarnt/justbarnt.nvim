@@ -16,6 +16,8 @@ local init = function()
 
     -- Delete a single char without copying it into the register
     nmap("n", "x", '"_x')
+    -- Swap letter to the right
+    nmap("n", "xl", "xp")
     -- Fix keybind descrepancy between nvims builtin matchit (%) and nvim-comment plugin
     nmap("n", "_gc", "<cmd><C-U>call CommentOperator(visualmode())<CR>")
 
