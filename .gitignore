@@ -2,3 +2,4 @@ tgs
 test.sh
 .luarc.json
 nvim
+*-lock.json
