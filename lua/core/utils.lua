@@ -19,7 +19,7 @@ M.remap = function(args)
     local silent = (args[4] and args[4].silent) or true
     local buffer = (args[4] and args[4].buffer) or 0
 
-    keymap.set(args[1], args[2], args[3], { desc = desc, silent = silent, buffer = buffer })
+    vim.keymap.set(args[1], args[2], args[3], { desc = desc, silent = silent, buffer = buffer })
 end
 
 
