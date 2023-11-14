@@ -5,15 +5,6 @@ end
 
 local list = require("nvim-treesitter.parsers").get_parser_configs()
 
-list.lua = {
-  install_info = {
-    url = "https://github.com/tjdevries/tree-sitter-lua",
-    revision = "0e860f697901c9b610104eb61d3812755d5211fc",
-    files = { "src/parser.c", "src/scanner.c" },
-    branch = "master",
-  },
-}
-
 local _ = require("nvim-treesitter.configs").setup{
     ensure_installed = { 
         "html",
@@ -24,6 +15,12 @@ local _ = require("nvim-treesitter.configs").setup{
         "tsx",
         "typescript",
         "vim",
+        "lua",
+        "svelte",
+        "c_sharp",
+        "cmake",
+        "c",
+        "cpp",
         "vimdoc",
     },
 
@@ -33,7 +30,7 @@ local _ = require("nvim-treesitter.configs").setup{
         highlight_current_scope = { enable = false },
     
         smart_rename = { 
-            enable = false,
+            enable = true,
             keymaps = {
                 smart_rename = "grr",
             },

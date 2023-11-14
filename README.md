@@ -3,6 +3,7 @@
 - [X] Keymaps (will just copy from previous mappings)
 - [X] Colorscheme (sorry not sorry)
 - [X] Treesitter
+- [X] Whichkey
 - [ ] Telescope
     - telescope-file-browser
     - telescope-hop

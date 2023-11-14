@@ -1,6 +1,10 @@
 return {
     {
         "nvim-telescope/telescope.nvim",
+        branch = "0.1.x",
+        dependencies = {
+            "nvim-lua/plenary.nvim"
+        },
         priority = 1000,
         config = function()
             require "plugins.config.telescope.setup"

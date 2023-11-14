@@ -62,14 +62,15 @@ require('telescope').setup {
         scroll_strategy = "cycle",
         color_devicons = true,
 
-        mappings = {
-            i = {
+        file_previewer = require("telescope.previewers").vim_buffer_cat.new,
+        grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
+        qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
 
+        ["ui-select"] = {
+            require("telescope.themes").get_dropdown {
+                
             }
         },
 
-        file_previewer = require('telescope.previewers').vim_buffer_cat.new,
-        grep_previewer = require('telescope.previewers').vim.buffer_vimgrep.new,
-        qflist_previewer = require('telescope.previewers').vim_buffer_qflist.new,
     }
 }
