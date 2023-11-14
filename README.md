@@ -4,6 +4,8 @@
 - [X] Colorscheme (sorry not sorry)
 - [X] Treesitter
 - [X] Whichkey
+- [ ] Language Server
+- [ ] Compiler
 - [ ] Telescope
     - telescope-file-browser
     - telescope-hop
@@ -11,6 +13,5 @@
     - AckslD/nvim-neoclip.lua
 - [ ] Harpoon
     - https://github.com/tjdevries/config_manager/blob/master/xdg_config/nvim/lua/custom/plugins/harpoon.lua
-- [ ] Language Servers
 - [ ] Add nvim-surround
 - [ ] Autopairs
