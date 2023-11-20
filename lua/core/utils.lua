@@ -5,10 +5,10 @@ local M = {}
 --  - args[1] string: Mode to apply keybind in: Defaults to 'n'
 --  - args[2] string: Key sequence
 --  - args[3] function|string: Function or string command to run
---  - args[4] table: 
+--  - args[4] table:
 --      - desc string: Description of the keybind: Defaults to ""
 --      - silent boolean: Whether or not to suppress the display of the command being executed in the command line: Defaults to true
---      - buffer number: The buffer as a number, passing 0 or nothing will apply the bind to all buffers (to apply the bind to): Defaults to 0  
+--      - buffer number: The buffer as a number, passing 0 or nothing will apply the bind to all buffers (to apply the bind to): Defaults to 0
 
 M.remap = function(args)
     if #args < 3 or type(args[1]) ~= "string" or type(args[2]) ~= "string" or (type(args[3]) ~= "function" and type(args[3]) ~= "string") then
@@ -24,3 +24,4 @@ end
 
 
 return M
+
