@@ -1,82 +1,81 @@
-local opt = vim.opt -- for conciseness
+local opt = vim.opt
 
--- Line numbers and relative line numbers for easy line jumping
-opt.number = true
-opt.relativenumber = true
-opt.numberwidth = 2
+-- Cool floating window popup menu for completion on command line
+opt.pumblend = 17
+opt.wildmode = "longest:full"
+opt.wildoptions = "pum"
 
-opt.title = true
+opt.showmode = false
+opt.showcmd = true
+opt.cmdheight = 1 -- Height of the command bar
+opt.incsearch = true -- Makes search act like search in modern browsers
+opt.showmatch = true -- show matching brackets when text indicator is over them
+opt.relativenumber = true -- Show line numbers
+opt.number = true -- But show the actual number for the line we're on
+opt.ignorecase = true -- Ignore case when searching...
+opt.smartcase = true -- ... unless there is a capital letter in the query
+opt.hidden = true -- I like having buffers stay around
+opt.equalalways = false -- I don't like my windows changing all the time
+opt.splitright = true -- Prefer windows splitting to the right
+opt.splitbelow = true -- Prefer windows splitting to the bottom
+opt.updatetime = 1000 -- Make updates happen faster
+opt.hlsearch = true -- I wouldn't use this without my DoNoHL function
+opt.scrolloff = 10 -- Make it so there are always ten lines below my cursor
 
--- Tab/Spacing settings
-opt.tabstop = 4
-opt.softtabstop = 4
-opt.shiftwidth = 4
-opt.expandtab = true
+-- opt.smoothscroll = true
+
+-- Cursorline highlighting control
+--  Only have it on in the active buffer
+opt.cursorline = true -- Highlight the current line
+local group = vim.api.nvim_create_augroup("CursorLineControl", { clear = true })
+local set_cursorline = function(event, value, pattern)
+  vim.api.nvim_create_autocmd(event, {
+    group = group,
+    pattern = pattern,
+    callback = function()
+      vim.opt_local.cursorline = value
+    end,
+  })
+end
+set_cursorline("WinLeave", false)
+set_cursorline("WinEnter", true)
+set_cursorline("FileType", false, "TelescopePrompt")
+
+-- Tabs
 opt.autoindent = true
-opt.smartindent = true
-opt.rtp:append("C:/Program Files/Neovim/share/nvim-qt/runtime/")
-
--- Prevents buffers from being closed when they are "abandoned", need for ToggleTerm
-opt.hidden = true
-
--- line wrapping
+opt.cindent = true
 opt.wrap = true
 
--- cursor line
-opt.cursorline = true
+opt.tabstop = 4
+opt.shiftwidth = 4
+opt.softtabstop = 4
+opt.expandtab = true
 
--- command height
-opt.cmdheight = 1 -- set to 0 to hide command line unless used
+opt.breakindent = true
+opt.showbreak = string.rep(" ", 3) -- Make it so that long lines wrap smartly
+opt.linebreak = true
 
--- enable undo file with undo history
-opt.undofile = true
+opt.foldmethod = "marker"
+opt.foldlevel = 0
+opt.modelines = 1
 
--- Directory Settings
-opt.swapfile = false
+opt.belloff = "all" -- Just turn the dang bell off
 
--- Set highlight on search
-opt.ignorecase = true
-opt.smartcase = true
+opt.clipboard = "unnamedplus"
 
--- time in ms to wait for a mapped sequence to complete
-opt.timeout = true
-opt.timeoutlen = 300
-opt.updatetime = 250
+opt.inccommand = "split"
+opt.swapfile = false -- Living on the edge
+opt.shada = { "!", "'1000", "<50", "s10", "h" }
 
--- Enable mouse mode
-opt.mouse = 'a'
+opt.mouse = "a"
 
--- For using powershell as terminal
-local powershell_options = {
-  shell = vim.fn.executable "pwsh" == 1 and "pwsh" or "powershell",
-  shellcmdflag = "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;",
-  shellredir = "-RedirectStandardOutput %s -NoNewWindow -Wait",
-  shellpipe = "2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode",
-  shellquote = "",
-  shellxquote = "",
-}
+-- set joinspaces
+opt.joinspaces = false -- Two spaces and grade school, we're done
 
-for option, value in pairs(powershell_options) do
-  vim.opt[option] = value
-end
+-- set fillchars=eob:~
+opt.fillchars = { eob = "~" }
 
--- enable terminal gui colors | NOTE: Ensure your terminal supports this.
-opt.termguicolors = true
-opt.background = 'dark' -- defaults dark to applicable color schemes
-opt.signcolumn = 'yes' -- show sign column tso that text doesn't shift
+vim.opt.diffopt = { "internal", "filler", "closeoff", "hiddenoff", "algorithm:minimal" }
 
--- Sync clipboard between OS and Neovim.
---  Remove this option if you want your OS clipboard to remain independent.
---  See `:help 'clipboard'`
-opt.clipboard:append('unnamedplus')
-
-opt.splitright = true
-opt.splitbelow = true
-
--- Lines to keep on screen when scrolling
-opt.scrolloff = 8
-
--- Draw a column
-opt.colorcolumn:append("120")
-
-opt.iskeyword:append("-") -- consider string-string as a whole word
+vim.opt.undofile = true
+vim.opt.signcolumn = "yes"

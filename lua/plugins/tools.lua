@@ -1,44 +1,40 @@
 return {
     {
-        "nvim-lualine/lualine.nvim",
-        config = function()
-            --require("plugins.config.lualine")
-        end,
-        dependencies = { "nvim-tree/nvim-web-devicons"}
-    }, -- Statusline
-
-    -- Git Signs for changes, deletes, etc.
-    {
-        "lewis6991/gitsigns.nvim",
-        config = function()
-            require("plugins.config.gitsigns")
-        end,
-    },
-
-    -- Harpoon (Quick file switching)
-    {
-        "ThePrimeagen/harpoon",
-        config = function()
-            require("plugins.config.harpoon")
-        end,
-        dependencies = {
-            "nvim-lua/plenary.nvim"
-        },
-    },
-
-    -- Give visible guide to keybinds paired with Mapleader
-    {
         "folke/which-key.nvim",
         config = function()
-            require("plugins.config.whichkeys")
+            require("jb.whichkey")
         end,
-        opts = {}
     },
     {
-        "2kabhishek/nerdy.nvim",
-        cmd = "Nerdy",
-        keys = {
-            { "<leader>ci", "<cmd>Nerdy<CR>", desc = "Pick Icon"},
-        }
+        "windwp/nvim-autopairs",
+        event = "InsertEnter",
+        opts = {},
+    },
+    {
+        "jinh0/eyeliner.nvim",
+        config = function()
+            -- Uncomment if you want to make Eyliner more subtle and only be bold and underlined
+            vim.api.nvim_set_hl(0, 'EyelinerPrimary', { fg = '#d11987', bold = true, underline = true })
+            vim.api.nvim_set_hl(0, 'EyelinerSecondary', { fg = '#d11987', underline = true })
+
+            -- autocmd to updated Eyeliners colors if you change your colorscheme
+            vim.api.nvim_create_autocmd('colorscheme', {
+                pattern = '*',
+                callback = function()
+                    vim.api.nvim_set_hl(0, 'EyelinerPrimary', { bold = true, underline = true })
+                end,
+            })
+
+            return require "eyeliner".setup({
+                highlight_on_key = true,
+                dim = true
+            })
+        end,
+    },
+    "junegunn/vim-easy-align",
+    {
+        "nvim-lualine/lualine.nvim",
+        dependencies = { "nvim-tree/nvim-web-devicons" },
     },
 }
+

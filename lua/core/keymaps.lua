@@ -32,21 +32,21 @@ local init = function()
     nmap("n", "J", "mzJ`z")
 
     -- Move Between Panes: Useful for ToggleTerm if using Tabline (Open Buffers in Tabs like VSCode)
-    nmap('n','<C-h>', [[<Cmd>wincmd h<CR>]], "Move Pane: Left")
-    nmap('n','<C-j>', [[<Cmd>wincmd j<CR>]], "Move Pane: Down")
-    nmap('n','<C-k>', [[<Cmd>wincmd k<CR>]], "Move Pane: Up")
-    nmap('n','<C-l>', [[<Cmd>wincmd l<CR>]], "Move Pane: Right")
+    nmap('n', '<C-h>', [[<Cmd>wincmd h<CR>]], "Move Pane: Left")
+    nmap('n', '<C-j>', [[<Cmd>wincmd j<CR>]], "Move Pane: Down")
+    nmap('n', '<C-k>', [[<Cmd>wincmd k<CR>]], "Move Pane: Up")
+    nmap('n', '<C-l>', [[<Cmd>wincmd l<CR>]], "Move Pane: Right")
 
 
     -- Easy return to normal mode
-    keymap.set("i", "jk", "<ESC>", {silent = true, desc = "Return to normal mode"})
+    keymap.set("i", "jk", "<ESC>", { silent = true, desc = "Return to normal mode" })
 
     -- Move Line up and move line down in VISUAL MODE
     keymap.set("v", "J", ":m '>+1<CR>gv=gv", { silent = true })
     keymap.set("v", "K", ":m '<-2<CR>gv=gv", { silent = true })
 
     -- Close buffer(s)
-    nmap("n", "<leader>x", "<cmd>bd<CR>", "Close Current Buffer" )
+    nmap("n", "<leader>x", "<cmd>bd<CR>", "Close Current Buffer")
     nmap("n", "<leader>X", "<cmd>bufdo bd<CR>", "Close All Buffers")
 
     -- Go back to File Explorer.
@@ -75,30 +75,9 @@ local plugins = function()
     nmap("n", "<leader>nh", ":DiffviewFileHistory %<CR>", "View History")
 end
 
-------------------
---- ToggleTerm ---
-------------------
-function _G.set_terminal_keys()
-    local tmaps = function(mode, keys, func, desc)
-        if desc then
-            desc = "ToggleTerm: " .. desc
-        end
-
-        keymap.set(mode, keys, func, { buffer = 0, desc = desc })
-    end
-
-    tmaps("t", '<ESC>', [[<C-\><C-n>]], "Enter Normal Mode")
-    tmaps("t", 'jk', [[<C-\><C-n>]], "Enter Normal Mode")
-    tmaps('t', '<C-h>', [[<Cmd>wincmd h<CR>]], "Move Pane: Left")
-    tmaps('t', '<C-j>', [[<Cmd>wincmd j<CR>]], "Move Pane: Down")
-    tmaps('t', '<C-k>', [[<Cmd>wincmd k<CR>]], "Move Pane: Up")
-    tmaps('t', '<C-l>', [[<Cmd>wincmd l<CR>]], "Move Pane: Right")
-    tmaps('t', '<C-w>', [[<C-\><C-n><C-w>]], "Switch to Normal and Move Pane: Previous")
-end
-vim.cmd('autocmd! TermOpen term://* lua set_terminal_keys()')
-
 -- Return keymap modules
 return {
     init = init,
     plugins = plugins,
 }
+

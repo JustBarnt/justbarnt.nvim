@@ -1,5 +1,5 @@
 require("tokyonight").setup({
-    style = 'storm',
+    style = 'moon',
     light_style = 'day',
     transparent = true,
     terminal_colors = true,
@@ -8,16 +8,17 @@ require("tokyonight").setup({
         keywords = { bold = true },
         functions = {},
         variables = {},
-        sidebars = 'dark',
-        floats = 'dark',
+        sidebars = 'transparent',
+        floats = 'transparent',
     },
-    sidebars = {'qf', "help"},
-    day_brightness = 0.3,
-    hide_inactive_statusline = false,
-    dim_inactive = false,
-    lualine_bold = false,
-    on_colors = function(colors) end,
-    on_highlights = function(highlights, colors) end,
+    sidebars = {
+        "qf",
+        "vista_kind",
+        "terminal",
+        "spectre_panel",
+        "startuptime",
+        "Outline",
+    },    
 })
 
 vim.cmd.colorscheme 'tokyonight'
