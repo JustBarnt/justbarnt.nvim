@@ -2,7 +2,7 @@ local keymap = vim.keymap
 local g = vim.g -- global settings
 
 local nmap = function(mode, keys, func, desc)
-    keymap.set(mode, keys, func, { desc = desc })
+    keymap.set(mode, keys, func, { desc = desc, silent = true })
 end
 -------------------------------------
 --- General Keymaps (Run on Init) ---
@@ -12,7 +12,7 @@ local init = function()
     g.mapleader = " "
     g.maplocalleader = " "
 
-    nmap("n", "<leader>sc", ':let @/ = ""<CR>');
+    nmap("n", "<leader>sc", ':let @/ = ""<CR>')
 
     -- Delete a single char without copying it into the register
     nmap("n", "x", '"_x')
@@ -32,11 +32,10 @@ local init = function()
     nmap("n", "J", "mzJ`z")
 
     -- Move Between Panes: Useful for ToggleTerm if using Tabline (Open Buffers in Tabs like VSCode)
-    nmap('n', '<C-h>', [[<Cmd>wincmd h<CR>]], "Move Pane: Left")
-    nmap('n', '<C-j>', [[<Cmd>wincmd j<CR>]], "Move Pane: Down")
-    nmap('n', '<C-k>', [[<Cmd>wincmd k<CR>]], "Move Pane: Up")
-    nmap('n', '<C-l>', [[<Cmd>wincmd l<CR>]], "Move Pane: Right")
-
+    nmap("n", "<C-h>", [[<Cmd>wincmd h<CR>]], "Move Pane: Left")
+    nmap("n", "<C-j>", [[<Cmd>wincmd j<CR>]], "Move Pane: Down")
+    nmap("n", "<C-k>", [[<Cmd>wincmd k<CR>]], "Move Pane: Up")
+    nmap("n", "<C-l>", [[<Cmd>wincmd l<CR>]], "Move Pane: Right")
 
     -- Easy return to normal mode
     keymap.set("i", "jk", "<ESC>", { silent = true, desc = "Return to normal mode" })
@@ -80,4 +79,3 @@ return {
     init = init,
     plugins = plugins,
 }
-

@@ -2,7 +2,7 @@ return {
     {
         "neovim/nvim-lspconfig",
         config = function()
-            require "jb.lsp"
+            require("jb.lsp")
         end,
     },
     "williamboman/mason.nvim",
@@ -11,14 +11,14 @@ return {
     {
         "WhoIsSethDaniel/mason-tool-installer.nvim",
         config = function()
-            require('mason-tool-installer').setup {
+            require("mason-tool-installer").setup({
                 auto_update = true,
                 debounce_hours = 24,
                 ensure_installed = {
                     "stylua",
-                    "lua-language-server"
+                    "lua-language-server",
                 },
-            }
+            })
         end,
     },
     "simrat39/inlay-hints.nvim",
@@ -30,17 +30,17 @@ return {
     {
         "folke/noice.nvim",
         config = function()
-            require("noice").setup {
+            require("noice").setup({
                 format = {
-                    telescope = require 'telescope'.load_extension('noice'),
-                    telescope_preview = require 'telescope'.load_extension('noice')
+                    telescope = require("telescope").load_extension("noice"),
+                    telescope_preview = require("telescope").load_extension("noice"),
                 },
                 lsp = {
                     override = {
                         ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
                         ["vim.lsp.util.stylize_markdown"] = true,
                         ["cmp.entry.get_documentation"] = true,
-                    }
+                    },
                 },
                 presets = {
                     bottom_search = true,
@@ -48,11 +48,10 @@ return {
                     inc_rename = true,
                     lsp_doc_border = true,
                 },
-            }
+            })
         end,
         dependencies = {
             "MunifTanjim/nui.nvim",
-        }
-    }
+        },
+    },
 }
-
