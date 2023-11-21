@@ -8,5 +8,5 @@
 - [ ] Refactor keymaps
      - Telescope
      - Autocompletion
-        - Enable <TAB>
+        - Enable via TAB
     - Others? 
