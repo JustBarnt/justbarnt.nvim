@@ -1,14 +1,14 @@
 local neodev = vim.F.npcall(require, "neodev")
 
 if neodev then
-    neodev.setup {
+    neodev.setup({
         override = function(_, library)
             library.enabled = true
             library.plugins = true
         end,
         lspconfig = true,
         pathStrict = true,
-    }
+    })
 end
 
 local lspconfig = vim.F.npcall(require, "lspconfig")
@@ -16,11 +16,11 @@ local lspconfig = vim.F.npcall(require, "lspconfig")
 if not lspconfig then
     return
 end
-local remap = require('core.utils').remap
+local remap = require("core.utils").remap
 
-local handlers = require "jb.lsp.handlers"
-local ts_util = require "nvim-lsp-ts-utils"
-local inlays = require "jb.lsp.inlay"
+local handlers = require("jb.lsp.handlers")
+local ts_util = require("nvim-lsp-ts-utils")
+local inlays = require("jb.lsp.inlay")
 
 local custom_init = function(client)
     client.config.flags = client.config.flags or {}
@@ -35,7 +35,7 @@ local filetype_attach = setmetatable({}, {
         __index = function()
             return function() end
         end,
-    }
+    },
 })
 
 local custom_attach = function(client, bufnr)
@@ -45,19 +45,19 @@ local custom_attach = function(client, bufnr)
 
     local filetype = vim.api.nvim_buf_get_option(0, "filetype")
 
-    remap { "i", "<c-s>", vim.lsp.buf.signature_help }
+    remap({ "i", "<c-s>", vim.lsp.buf.signature_help })
 
-    remap { "n", "<space>cr", vim.lsp.buf.rename }
-    remap { "n", "<space>ca", vim.lsp.buf.code_action }
+    remap({ "n", "<space>cr", vim.lsp.buf.rename })
+    remap({ "n", "<space>ca", vim.lsp.buf.code_action })
 
-    remap { "n", "gd", vim.lsp.buf.definition }
-    remap { "n", "gD", vim.lsp.buf.declaration }
-    remap { "n", "gT", vim.lsp.buf.type_definition }
-    remap { "n", "K", vim.lsp.buf.hover, { desc = "lsp:hover" } }
+    remap({ "n", "gd", vim.lsp.buf.definition })
+    remap({ "n", "gD", vim.lsp.buf.declaration })
+    remap({ "n", "gT", vim.lsp.buf.type_definition })
+    remap({ "n", "K", vim.lsp.buf.hover, { desc = "lsp:hover" } })
 
-    remap { "n", "<space>gI", handlers.implementation }
-    remap { "n", "<space>lr", "<cmd>lua R('jb.lsp.codelens').run()<CR>" }
-    remap { "n", "<space>rr", "LspRestart" }
+    remap({ "n", "<space>gI", handlers.implementation })
+    remap({ "n", "<space>lr", "<cmd>lua R('jb.lsp.codelens').run()<CR>" })
+    remap({ "n", "<space>rr", "LspRestart" })
 
     vim.bo.omnifunc = "v:lua.vim.lsp.omnifunc"
 
@@ -88,7 +88,16 @@ local servers = {
             },
         },
     },
-
+    intelephense = {
+        settings = {
+            environment = {
+                includePaths = {
+                    "C:/PHP/includes/Cake2x/lib/Cake",
+                    "C:/PHP/includes/Cake3x/lib/Cake",
+                },
+            },
+        },
+    },
     gdscript = true,
     -- graphql = true,
     html = true,
@@ -104,7 +113,7 @@ local servers = {
         },
     },
 
-    cmake = (1 == vim.fn.executable "cmake-language-server"),
+    cmake = (1 == vim.fn.executable("cmake-language-server")),
 
     clangd = {
         cmd = {
@@ -129,7 +138,7 @@ local servers = {
   },]]
 
     cssls = true,
-
+    emmet_language_server = { filetypes = { "html", "svelte", "astro", "javascriptreact", "typescriptreact", "xml" } },
     -- eslint = true,
     tsserver = {
         init_options = ts_util.init_options,
@@ -146,16 +155,16 @@ local servers = {
         on_attach = function(client)
             custom_attach(client)
 
-            ts_util.setup { auto_inlay_hints = false }
+            ts_util.setup({ auto_inlay_hints = false })
             ts_util.setup_client(client)
         end,
     },
 }
 
 require("mason").setup()
-require("mason-lspconfig").setup {
+require("mason-lspconfig").setup({
     ensure_installed = { "lua_ls", "jsonls" },
-}
+})
 
 local setup_server = function(server, config)
     if not config then
@@ -182,18 +191,18 @@ end
 -- Only run stylua when we can find a root dir
 require("conform.formatters.stylua").require_cwd = true
 
-require("conform").setup {
+require("conform").setup({
     formatters_by_ft = {
         lua = { "stylua" },
         typescript = { { "prettierd", "prettier" } },
         javascript = { { "prettierd", "prettier" } },
     },
-}
+})
 
 vim.api.nvim_create_autocmd("BufWritePre", {
     pattern = "*",
     callback = function(args)
-        require("conform").format { bufnr = args.buf, lsp_fallback = true }
+        require("conform").format({ bufnr = args.buf, lsp_fallback = true })
     end,
 })
 
@@ -202,4 +211,3 @@ return {
     on_attach = custom_attach,
     capabilities = updated_capabilities,
 }
-
