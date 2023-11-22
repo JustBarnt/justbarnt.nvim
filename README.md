@@ -11,7 +11,6 @@
 
 ## After Merge into main
 - [ ] Refactor keymaps
-     - Telescope
-     - Autocompletion
-        - Enable via TAB
-    - Others? 
+     - [ ] Telescope
+     - [ ] Others? 
+     
