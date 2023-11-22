@@ -10,6 +10,7 @@
 - [ ] Add based.nvim
 
 ## After Merge into main
-- [X] Refactor keymaps
-     - Telescope
-     - Others? 
+- [ ] Refactor keymaps
+     - [ ] Telescope
+     - [ ] Others? 
+     
