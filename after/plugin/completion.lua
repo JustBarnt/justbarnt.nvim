@@ -19,12 +19,12 @@ local cmp = require("cmp")
 
 cmp.setup({
     mapping = {
-        ["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
-        ["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
-        ["<C-d>"] = cmp.mapping.scroll_docs(-4),
-        ["<C-f>"] = cmp.mapping.scroll_docs(4),
+        ["<C-d>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+        ["<C-u>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+        ["<C-p>"] = cmp.mapping.scroll_docs(-4),
+        ["<C-n>"] = cmp.mapping.scroll_docs(4),
         ["<C-e>"] = cmp.mapping.abort(),
-        ["<c-y>"] = cmp.mapping(
+        ["<CR>"] = cmp.mapping(
             cmp.mapping.confirm({
                 behavior = cmp.ConfirmBehavior.Insert,
                 select = true,
@@ -70,14 +70,6 @@ cmp.setup({
             select = false,
         }),
     },
-
-    -- Youtube:
-    --    the order of your sources matter (by default). That gives them priority
-    --    you can configure:
-    --        keyword_length
-    --        priority
-    --        max_item_count
-    --        (more?)
     sources = cmp.config.sources({
         { name = "nvim_lua" },
         { name = "nvim_lsp" },
