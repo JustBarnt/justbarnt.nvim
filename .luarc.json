@@ -1,0 +1,9 @@
+{
+    "$schema": "https://raw.githubusercontent.com/sumneko/vscode-lua/master/setting/schema.json",
+    "Lua.workspace.checkThirdParty": false,
+    "workspace.library": [
+        "C:/Program Files/Neovim/share/nvim/runtime/lua",
+        "C:/Users/bwilliams/AppData/Local/nvim-data/lazy/nvim-cmp/lua"
+    ],
+    "workspace.checkThirdParty": false
+}

@@ -1,6 +1,5 @@
 tgs
 test.sh
-.luarc.json
 nvim
 *-lock.json
 *lock.json
