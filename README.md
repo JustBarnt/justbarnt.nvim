@@ -10,8 +10,6 @@
 - [ ] Add based.nvim
 
 ## After Merge into main
-- [ ] Refactor keymaps
+- [X] Refactor keymaps
      - Telescope
-     - Autocompletion
-        - Enable via TAB
-    - Others? 
+     - Others? 
