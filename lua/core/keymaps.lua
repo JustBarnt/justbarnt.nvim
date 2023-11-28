@@ -15,9 +15,9 @@ local init = function()
     nmap("n", "<leader>sc", ':let @/ = ""<CR>')
 
     -- Delete a single char without copying it into the register
-    nmap("n", "x", '"_x')
+    -- keymap.set("n", "x", '"_x', { silent = true })
     -- Swap letter to the right
-    nmap("n", "xl", "xp")
+    -- nmap("n", "xl", "xp")
     -- Fix keybind descrepancy between nvims builtin matchit (%) and nvim-comment plugin
     nmap("n", "_gc", "<cmd><C-U>call CommentOperator(visualmode())<CR>")
 
@@ -43,6 +43,9 @@ local init = function()
     -- Move Line up and move line down in VISUAL MODE
     keymap.set("v", "J", ":m '>+1<CR>gv=gv", { silent = true })
     keymap.set("v", "K", ":m '<-2<CR>gv=gv", { silent = true })
+
+    -- Split buffer
+    keymap.set("n", "<leader>bv", ":vsplit <CR>", { silent = true })
 
     -- Close buffer(s)
     nmap("n", "<leader>x", "<cmd>bd<CR>", "Close Current Buffer")

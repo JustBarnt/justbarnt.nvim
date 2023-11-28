@@ -42,16 +42,16 @@ set_cursorline("FileType", false, "TelescopePrompt")
 -- Tabs
 opt.autoindent = true
 opt.cindent = true
-opt.wrap = true
+opt.wrap = false
 
 opt.tabstop = 4
 opt.shiftwidth = 4
 opt.softtabstop = 4
 opt.expandtab = true
 
-opt.breakindent = true
+opt.breakindent = false
 opt.showbreak = string.rep(" ", 3) -- Make it so that long lines wrap smartly
-opt.linebreak = true
+opt.linebreak = false
 
 opt.foldmethod = "marker"
 opt.foldlevel = 0
