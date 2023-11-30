@@ -5,8 +5,8 @@ end
 
 local list = require("nvim-treesitter.parsers").get_parser_configs()
 
-local _ = require("nvim-treesitter.configs").setup{
-    ensure_installed = { 
+local _ = require("nvim-treesitter.configs").setup({
+    ensure_installed = {
         "html",
         "javascript",
         "json",
@@ -25,11 +25,11 @@ local _ = require("nvim-treesitter.configs").setup{
     },
 
     highlight = { enable = true },
-    refactor = { 
+    refactor = {
         highlight_definitions = { enable = true },
         highlight_current_scope = { enable = false },
-    
-        smart_rename = { 
+
+        smart_rename = {
             enable = true,
             keymaps = {
                 smart_rename = "grr",
@@ -44,14 +44,13 @@ local _ = require("nvim-treesitter.configs").setup{
             },
         },
     },
-    
+
     context_commentstring = {
         enable = true,
 
         -- With Comment.nvim, we don't need to run this on the autocmd
         --  Only run it in pre-hook
         enable_autocmd = false,
-
     },
 
     textobjects = {
@@ -124,9 +123,9 @@ local _ = require("nvim-treesitter.configs").setup{
             show_help = "?",
         },
     },
-}
+})
 
-require("treesitter-context").setup { enable = true }
+require("treesitter-context").setup({ enable = false })
 
 vim.treesitter.query.set("javascript", "context", "")
 vim.treesitter.query.set("typescript", "context", "")
