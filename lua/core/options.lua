@@ -1,5 +1,10 @@
 local opt = vim.opt
 
+-- Line Numbers
+opt.numberwidth = 2
+opt.relativenumber = true -- Show line numbers
+opt.number = true -- But show the actual number for the line we're on
+
 -- Cool floating window popup menu for completion on command line
 opt.pumblend = 17
 opt.wildmode = "longest:full"
@@ -10,8 +15,6 @@ opt.showcmd = true
 opt.cmdheight = 1 -- Height of the command bar
 opt.incsearch = true -- Makes search act like search in modern browsers
 opt.showmatch = true -- show matching brackets when text indicator is over them
-opt.relativenumber = true -- Show line numbers
-opt.number = true -- But show the actual number for the line we're on
 opt.ignorecase = true -- Ignore case when searching...
 opt.smartcase = true -- ... unless there is a capital letter in the query
 opt.hidden = true -- I like having buffers stay around
@@ -72,8 +75,7 @@ opt.joinspaces = false -- Two spaces and grade school, we're done
 
 -- set fillchars=eob:~
 opt.fillchars = { eob = "~" }
-
-vim.opt.diffopt = { "internal", "filler", "closeoff", "hiddenoff", "algorithm:minimal" }
-
-vim.opt.undofile = true
-vim.opt.signcolumn = "yes"
+opt.diffopt = { "internal", "filler", "closeoff", "hiddenoff", "algorithm:minimal" }
+opt.undofile = true
+opt.signcolumn = "yes"
+opt.colorcolumn:append("120")

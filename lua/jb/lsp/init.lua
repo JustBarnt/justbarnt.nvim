@@ -91,10 +91,10 @@ local servers = {
     intelephense = {
         settings = {
             environment = {
-                includePaths = {
-                    "C:/PHP/includes/Cake2x/lib/Cake",
+                --[[ includePaths = {
+                    "C:/PHP/includes/Cake",
                     "C:/PHP/includes/Cake3x/lib/Cake",
-                },
+                }, ]]
             },
         },
     },
