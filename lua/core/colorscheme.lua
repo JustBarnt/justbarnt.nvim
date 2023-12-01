@@ -1,6 +1,6 @@
 require("tokyonight").setup({
-    style = 'moon',
-    light_style = 'day',
+    style = "moon",
+    light_style = "day",
     transparent = true,
     terminal_colors = true,
     styles = {
@@ -8,8 +8,8 @@ require("tokyonight").setup({
         keywords = { bold = true },
         functions = {},
         variables = {},
-        sidebars = 'transparent',
-        floats = 'transparent',
+        sidebars = "transparent",
+        floats = "transparent",
     },
     sidebars = {
         "qf",
@@ -18,7 +18,14 @@ require("tokyonight").setup({
         "spectre_panel",
         "startuptime",
         "Outline",
-    },    
+    },
 })
 
-vim.cmd.colorscheme 'tokyonight'
+require("rose-pine").setup({
+    variant = "main",
+    dark_variant = "main",
+    bold_vert_split = true,
+    disable_background = true,
+})
+
+vim.cmd.colorscheme("rose-pine")

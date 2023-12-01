@@ -88,16 +88,7 @@ local servers = {
             },
         },
     },
-    intelephense = {
-        settings = {
-            environment = {
-                --[[ includePaths = {
-                    "C:/PHP/includes/Cake",
-                    "C:/PHP/includes/Cake3x/lib/Cake",
-                }, ]]
-            },
-        },
-    },
+    intelephense = {},
     gdscript = true,
     -- graphql = true,
     html = true,
