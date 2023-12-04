@@ -105,12 +105,6 @@ local _ = require("nvim-treesitter.configs").setup({
     },
 })
 
-require("treesitter-context").setup({
-    enable = true,
-    max_lines = 5,
-    multiline_threshold = 2,
-})
-
 vim.treesitter.query.set("javascript", "context", "")
 vim.treesitter.query.set("typescript", "context", "")
 vim.treesitter.query.set("lua", "context", "")
