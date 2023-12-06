@@ -5,8 +5,8 @@ M.run = function()
         vim.cmd([[w]])
     end
 
-    local bufnr = vim.api.nvim_get_current_buf()
-    local line = vim.api.nvim_win_get_cursor(0)[1]
+    local bufnr = 0
+    local line = vim.api.nvim_win_get_cursor(0)
 
     local lenses = vim.deepcopy(vim.lsp.codelens.get(bufnr))
 
@@ -20,7 +20,7 @@ M.run = function()
 
     local _, lens = next(lenses)
 
-    local client_id = next(vim.lsp.get_active_clients(bufnr))
+    local client_id = next(vim.lsp.get_active_clients())
     local client = vim.lsp.get_client_by_id(client_id)
     client.request("workspace/executeCommand", lens.command, function(...)
         local result = vim.lsp.handlers["workspace/executeCommand"](...)
@@ -37,7 +37,7 @@ M.toggle_virtlines = function()
 end
 
 M.refresh_virtlines = function()
-    local bufnr = vim.api.nvim_get_current_buf()
+    local bufnr = 0
     local params = { textDocument = vim.lsp.util.make_text_document_params() }
     vim.lsp.buf_request(bufnr, "textDocument/codeLens", params, function(err, result, _, _)
         if err then

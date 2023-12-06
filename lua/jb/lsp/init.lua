@@ -110,7 +110,7 @@ updated_capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = false
 -- Completion Configuration
 vim.tbl_deep_extend("force", updated_capabilities, require("cmp_nvim_lsp").default_capabilities())
 updated_capabilities.textDocument.completion.completionItem.insertReplaceSupport = false
-updated_capabilities.textDocument.codeLens = { dynamicRegistration = false }
+updated_capabilities.textDocument.codeLens = { dynamicRegistration = true }
 
 local servers = {
     -- Also uses `shellcheck` and `explainshell`
@@ -119,6 +119,9 @@ local servers = {
         Lua = {
             workspace = {
                 checkThirdParty = false,
+            },
+            hint = {
+                enable = true,
             },
         },
     },
