@@ -14,6 +14,14 @@ vim.keymap.set("n", "<leader>hl", function()
     harpoon.ui:toggle_quick_menu(harpoon:list())
 end, { desc = "[H]arpoon [L]ist", silent = true })
 
+vim.keymap.set("n", "<leader>hp", function()
+    harpoon:list():prev()
+end, { desc = "[H]arpoon [P]revious" })
+
+vim.keymap.set("n", "<leader>hn", function()
+    harpoon:list():next()
+end, { desc = "[H]arpoon [N]ext" })
+
 for i = 1, 5 do
     vim.keymap.set("n", string.format("<space>%s", i), function()
         harpoon:list():select(i)
