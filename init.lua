@@ -1,3 +1,4 @@
+require("jb.globals")
 -- Set our preferred options
 require("core.options")
 -- Get and active our keymaps

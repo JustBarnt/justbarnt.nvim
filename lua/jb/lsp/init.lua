@@ -123,6 +123,12 @@ local servers = {
             hint = {
                 enable = true,
             },
+            diagnostics = {
+                disable = {
+                    "missing-fields",
+                    "incomplete-signature-doc",
+                },
+            },
         },
     },
     intelephense = {},

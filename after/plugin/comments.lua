@@ -2,6 +2,7 @@ if not pcall(require, "Comment") then
     return
 end
 
+---@diagnostic disable: missing-fields
 require("Comment").setup({
 
     -- LHS of operator-pending mapping in NORMAL + VISUAL mode

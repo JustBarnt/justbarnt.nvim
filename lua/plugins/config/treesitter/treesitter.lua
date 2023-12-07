@@ -5,6 +5,7 @@ end
 
 local list = require("nvim-treesitter.parsers").get_parser_configs()
 
+---@diagnostic_disabled: missing-fields
 local _ = require("nvim-treesitter.configs").setup({
     ensure_installed = {
         "html",
