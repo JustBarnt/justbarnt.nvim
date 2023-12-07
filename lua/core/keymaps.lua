@@ -55,7 +55,7 @@ local init = function()
     -- I don't use Neotree becuase I'll be using harpoon
     nmap("n", "<leader>pv", vim.cmd.Ex, "Show File Explorer")
 
-    -- Move Between Panes
+    nmap("n", "<leader>L", ":Lazy <CR>", "[L]azy Show")
 
     -- Source files
     nmap("n", "<leader>S", function()

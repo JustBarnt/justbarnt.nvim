@@ -131,7 +131,15 @@ local servers = {
             },
         },
     },
-    intelephense = {},
+    intelephense = {
+        settings = {
+            environment = {
+                includePaths = {
+                    "C:/PHP/includes/Cake",
+                },
+            },
+        },
+    },
     gdscript = true,
     -- graphql = true,
     html = true,
@@ -251,7 +259,7 @@ require("conform").setup({
 vim.api.nvim_create_autocmd("BufWritePre", {
     pattern = "*",
     callback = function(args)
-        require("conform").format({ bufnr = args.buf, lsp_fallback = true })
+        require("conform").format({ bufnr = args.buf, lsp_fallback = false })
     end,
 })
 

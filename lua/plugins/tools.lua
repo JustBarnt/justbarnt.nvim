@@ -36,4 +36,8 @@ return {
         "nvim-lualine/lualine.nvim",
         dependencies = { "nvim-tree/nvim-web-devicons" },
     },
+    {
+        "mg979/vim-visual-multi",
+        branch = "master",
+    },
 }
