@@ -80,7 +80,7 @@ opt.clipboard = "unnamedplus"
 
 opt.inccommand = "split"
 opt.swapfile = false -- Living on the edge
-opt.shada = { "!", "'1000", "<50", "s10", "h" }
+opt.shada = { "!", "'1000", "<50", "s10", "h", "rA", "rB" }
 
 opt.mouse = "a"
 
