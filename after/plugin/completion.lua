@@ -1,3 +1,4 @@
+---@diagnostic disable: missing-fields
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
 
 -- Dont show "dumb matching stuff" https://github.com/tjdevries/confing_manager/blob/master/xdg_config/nvim/after/plugin/completion.lua#L5C39-L5C39
@@ -144,3 +145,10 @@ cmp.setup({
         ghost_text = false,
     },
 })
+
+_ = vim.cmd([[
+    augroup DadbodSql
+        au!
+        autocmd FileType sql,mysql,plsql lua require('cmp').setup.buffer { sources = { { name = "vim-dadbod-completion" } } }
+    augroup END
+]])

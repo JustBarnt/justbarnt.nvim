@@ -11,10 +11,12 @@ return {
     {
         "luukvbaal/statuscol.nvim",
         config = function()
-            require("statuscol").setup {
+            require("statuscol").setup({
                 setopt = true,
-            }
+            })
         end,
     },
+    {
+        "justbarnt/dotenv.nvim",
+    },
 }
-
