@@ -16,10 +16,6 @@ local init = function()
 
     map("n", "<leader>ca", ":%y<CR>", "[C]opy [A]ll")
 
-    -- Delete a single char without copying it into the register
-    -- keymap.set("n", "x", '"_x', { silent = true })
-    -- Swap letter to the right
-    -- nmap("n", "xl", "xp")
     -- Fix keybind descrepancy between nvims builtin matchit (%) and nvim-comment plugin
     map("n", "_gc", "<cmd><C-U>call CommentOperator(visualmode())<CR>")
 
@@ -59,7 +55,18 @@ local init = function()
     map("n", "<leader>L", ":Lazy <CR>", "[L]azy Show")
 
     -- Source files
-    map("n", "<F5>", ":so %<CR>", "Source Current File")
+    map("n", "<leader><F5>", function()
+        --save files
+        vim.cmd.w()
+        -- if lua file and we're in 'nvim/' dir: we :so the file
+        local current_file_path = vim.api.nvim_buf_get_name(0)
+        local in_config = current_file_path:find("^" .. vim.fn.stdpath("config")) ~= nil
+        local is_lua = current_file_path:find(".lua$") ~= nil
+
+        if in_config and is_lua then
+            vim.cmd.so()
+        end
+    end, "Source Current File")
 
     -- EasyAlign
     map("x", "ga", vim.cmd.EasyAlign)
