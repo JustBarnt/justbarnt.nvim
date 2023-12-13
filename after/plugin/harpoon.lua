@@ -1,12 +1,19 @@
 local harpoon = require("harpoon")
 
 -- REQUIRED
-harpoon:setup({})
+harpoon:setup({
+    settings = {
+        save_on_toggle = true,
+        sync_on_ui_close = true,
+    },
+})
 -- REQUIRED
 
 -- Append current open file to our harpon list
 vim.keymap.set("n", "<leader>ha", function()
     harpoon:list():append()
+    local file_name = vim.api.nvim_buf_get_name(0)
+    vim.notify("Added " .. file_name .. " to Harpoon List", vim.log.levels.INFO)
 end, { desc = "[H]arpoon [A]dd", silent = true })
 
 -- Toggle a UI popup of or current harpooned items.
