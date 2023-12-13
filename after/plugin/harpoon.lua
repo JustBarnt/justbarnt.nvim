@@ -23,7 +23,13 @@ vim.keymap.set("n", "<leader>hn", function()
 end, { desc = "[H]arpoon [N]ext" })
 
 for i = 1, 5 do
-    vim.keymap.set("n", string.format("<space>%s", i), function()
+    vim.keymap.set("n", string.format("<leader>%s", i), function()
         harpoon:list():select(i)
-    end, { desc = "Harpoon: Jump To File: " .. i, silent = true })
+    end, { desc = "Harpoon: Jump To File: [" .. i .. "]", silent = true })
+    -- Splitting pooned file to the right.
+    vim.keymap.set("n", string.format("<leader>hs%s", i), function()
+        vim.notify("Opening " .. vim.inspect(harpoon:list():get(i).value .. " in a split buffer."), vim.log.levels.INFO)
+        local buf_name = harpoon:list():get(i).value
+        vim.cmd.vsplit(buf_name)
+    end, { desc = "Harpoon: [S]plit File: [" .. i .. "] Right" })
 end
