@@ -51,17 +51,13 @@ require("nvim-treesitter.configs").setup({
     },
     highlight = {
         enable = true,
+        disable = function() -- Disable in large buffers
+            return vim.api.nvim_buf_line_count(0) > 50000
+        end,
     },
     refactor = {
         highlight_definitions = { enable = true },
         highlight_current_scope = { enable = false },
-
-        smart_rename = {
-            enable = false,
-            keymaps = {
-                smart_rename = "grr",
-            },
-        },
 
         navigation = {
             enable = false,
