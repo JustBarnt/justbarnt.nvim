@@ -59,6 +59,13 @@ require("nvim-treesitter.configs").setup({
         highlight_definitions = { enable = true },
         highlight_current_scope = { enable = false },
 
+        smart_rename = {
+            enable = true,
+            keymaps = {
+                smart_rename = "<leader>cR",
+            },
+        },
+
         navigation = {
             enable = false,
             keymaps = {
