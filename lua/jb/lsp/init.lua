@@ -35,7 +35,7 @@ local augroup_codelens = vim.api.nvim_create_augroup("custom-lsp-codelens", { cl
 
 local filetype_attach = setmetatable({}, {
     {
-        intelephense = function()
+        --[[ intelephense = function()
             autocmd_clear({ group = augroup_codelens, buffer = 0 })
             autocmd({
                 { "bufenter", "bufwritepost", "cursorhold" },
@@ -50,7 +50,7 @@ local filetype_attach = setmetatable({}, {
                 require("jb.lsp.codelens").toggle_virtlines,
                 { silent = true, desc = "[t]oggle [t]ypes", buffer = 0 }
             )
-        end,
+        end, ]]
         __index = function()
             return function() end
         end,
