@@ -13,4 +13,7 @@
 - [ ] Refactor keymaps
      - [ ] Telescope
      - [ ] Others? 
-     
+ 
+
+# Note
+- When in a Telescope prompt <C-S>/<C-V> will open the current file under cursor in a split/verticly split window.
