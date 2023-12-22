@@ -3,7 +3,7 @@ if not pcall(require, "telescope") then
     return
 end
 
-local keymap = require("core.utils").remap
+local trouble_tele = require("trouble.providers.telescope")
 local builtin = require("telescope.builtin")
 local actions = require("telescope.actions")
 local action_state = require("telescope.actions.state")
@@ -73,9 +73,69 @@ require("telescope").setup({
         scroll_strategy = "cycle",
         color_devicons = true,
 
+        mappings = {
+            i = {
+                ["<RightMouse>"] = actions.close,
+                ["<LeftMouse>"] = actions.select_default,
+                ["<ScrollWheelDown>"] = actions.move_selection_next,
+                ["<ScrollWheelUp>"] = actions.move_selection_previous,
+
+                ["<C-x>"] = false,
+                ["<C-s>"] = actions.select_horizontal,
+                ["<C-n>"] = "move_selection_next",
+
+                ["<C-e>"] = actions.results_scrolling_down,
+                ["<C-y>"] = actions.results_scrolling_up,
+
+                -- These are new :)
+                ["<M-p>"] = action_layout.toggle_preview,
+                ["<M-m>"] = action_layout.toggle_mirror,
+
+                -- Open in trouble from telescope
+                ["<C-t>"] = trouble_tele.open_with_trouble,
+
+                ["<C-w>"] = function()
+                    vim.api.nvim_input("<c-s-w>")
+                end,
+            },
+
+            n = {
+                ["<C-e>"] = actions.results_scrolling_down,
+                ["<C-y>"] = actions.results_scrolling_up,
+                ["<C-t>"] = trouble_tele.open_with_trouble,
+            },
+        },
+
         file_previewer = require("telescope.previewers").vim_buffer_cat.new,
         grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
         qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
+
+        pickers = {
+            find_files = {
+                -- I don't like having the cwd prefix in my files
+                find_command = vim.fn.executable("fdfind") == 1 and { "fdfind", "--strip-cwd-prefix", "--type", "f" }
+                    or nil,
+
+                mappings = {
+                    n = {
+                        ["kj"] = "close",
+                    },
+                },
+            },
+
+            git_branches = {
+                mappings = {
+                    i = {
+                        ["<C-a>"] = false,
+                    },
+                },
+            },
+
+            buffers = {
+                sort_lastused = true,
+                sort_mru = true,
+            },
+        },
 
         ["ui-select"] = {
             require("telescope.themes").get_dropdown({}),
@@ -88,7 +148,7 @@ vim.keymap.set("n", "<leader>?", builtin.oldfiles, { desc = "[?] Find recently o
 vim.keymap.set("n", "<leader><space>", builtin.buffers, { desc = "[ ] Find existing buffers" })
 vim.keymap.set("n", "<leader>/", function()
     -- You can pass additional configuration to telescope to change theme, layout, etc.
-    builtin.current_buffer_fuzzy_find(themes.get_dropdown({
+    builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
         winblend = 10,
         previewer = false,
     }))

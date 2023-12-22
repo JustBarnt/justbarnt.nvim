@@ -141,7 +141,6 @@ local servers = {
         },
     },
     gdscript = true,
-    -- graphql = true,
     html = true,
     vimls = true,
     yamlls = true,
@@ -157,21 +156,7 @@ local servers = {
 
     cmake = (1 == vim.fn.executable("cmake-language-server")),
 
-    clangd = {
-        cmd = {
-            "clangd",
-            "--background-index",
-            "--suggest-missing-includes",
-            "--clang-tidy",
-            "--header-insertion=iwyu",
-        },
-        init_options = {
-            clangdFileStatus = true,
-        },
-        filetypes = {
-            "c",
-        },
-    },
+    clangd = {},
     powershell_es = {
         bundle_path = vim.fn.stdpath("data") .. "/mason/packages/powershell-editor-services",
         shell = "pwsh.exe",
