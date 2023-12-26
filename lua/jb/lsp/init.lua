@@ -234,17 +234,23 @@ end
 require("conform.formatters.stylua").require_cwd = true
 
 require("conform").setup({
+
     formatters_by_ft = {
         lua = { "stylua" },
         typescript = { { "prettierd", "prettier" } },
         javascript = { { "prettierd", "prettier" } },
+        cmake = { "cmake_format" },
+    },
+    format_on_save = {
+        timeout_ms = 500,
+        lsp_fallback = true,
     },
 })
 
 vim.api.nvim_create_autocmd("BufWritePre", {
-    pattern = "*",
+    pattern = "*", --TODO: Update pattern to match file that aren't in the given table
     callback = function(args)
-        require("conform").format({ bufnr = args.buf, lsp_fallback = false })
+        require("conform").format({ bufnr = args.buf, lsp_fallback = true })
     end,
 })
 

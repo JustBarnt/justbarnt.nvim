@@ -25,7 +25,19 @@ return {
     "folke/neodev.nvim",
     "jose-elias-alvarez/nvim-lsp-ts-utils", -- TODO: repace with typescript.nvim
     "b0o/schemastore.nvim",
-    "stevearc/conform.nvim",
+    {
+        "stevearc/conform.nvim",
+        keys = {
+            {
+                "<leader>f",
+                function()
+                    require("conform").format({ async = true, lsp_fallback = true })
+                end,
+                mode = "",
+                desc = "[F]ormat Buffer",
+            },
+        },
+    },
     "folke/trouble.nvim",
     {
         "folke/noice.nvim",

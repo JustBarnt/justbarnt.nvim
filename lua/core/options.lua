@@ -2,7 +2,7 @@ local opt = vim.opt
 
 -- Assumes you are on windows with python installed in you appdata folder (default) install path
 local home_path = os.getenv("HOMEPATH")
-vim.g.python3_host_prog = "C:" .. home_path .. "/AppData/Local/Programs/Python/Python310/python.exe"
+vim.g.python3_host_prog = "C:" .. home_path .. "/AppData/Local/Programs/Python/Python3/python.exe"
 
 -- For using powershell as terminal
 local powershell_options = {
