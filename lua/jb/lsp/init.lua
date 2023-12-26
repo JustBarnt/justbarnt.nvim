@@ -154,7 +154,7 @@ local servers = {
         },
     },
 
-    cmake = (1 == vim.fn.executable("cmake-language-server")),
+    cmake = {},
 
     clangd = {},
     powershell_es = {
