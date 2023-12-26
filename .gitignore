@@ -5,3 +5,4 @@ nvim
 *lock.json
 *.env
 *.env-*
+.luarc.json
