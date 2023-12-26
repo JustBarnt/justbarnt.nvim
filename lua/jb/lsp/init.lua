@@ -153,10 +153,22 @@ local servers = {
             },
         },
     },
-
     cmake = {},
-
-    clangd = {},
+    clangd = {
+        cmd = {
+            "clangd",
+            "--background-index",
+            "--suggest-missing-includes",
+            "--clang-tidy",
+            "--header-insertion=iwyu",
+        },
+        init_options = {
+            clangdFileStatus = true,
+        },
+        filetypes = {
+            "c","cpp"
+        }
+    },
     powershell_es = {
         bundle_path = vim.fn.stdpath("data") .. "/mason/packages/powershell-editor-services",
         shell = "pwsh.exe",
@@ -255,7 +267,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 })
 
 return {
-    on_init = custom_init,
+    on_init = custom_init,  (use "git add <file>..." to include in what will be committed)
     on_attach = custom_attach,
     capabilities = updated_capabilities,
 }
