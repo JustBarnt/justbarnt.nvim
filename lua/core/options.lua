@@ -27,10 +27,10 @@ opt.number = true -- But show the actual number for the line we're on
 opt.pumblend = 17
 opt.wildmode = "longest:full"
 opt.wildoptions = "pum"
-
+opt.termguicolors = true
 opt.showmode = false
 opt.showcmd = true
-opt.cmdheight = 1 -- Height of the command bar
+opt.cmdheight = 0 -- Height of the command bar
 opt.incsearch = true -- Makes search act like search in modern browsers
 opt.showmatch = true -- show matching brackets when text indicator is over them
 opt.ignorecase = true -- Ignore case when searching...

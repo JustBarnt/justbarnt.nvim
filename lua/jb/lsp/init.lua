@@ -267,7 +267,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 })
 
 return {
-    on_init = custom_init,  (use "git add <file>..." to include in what will be committed)
+    on_init = custom_init,
     on_attach = custom_attach,
     capabilities = updated_capabilities,
 }
