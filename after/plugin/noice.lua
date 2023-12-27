@@ -2,14 +2,36 @@ local noice = require("noice")
 
 ---@class NoiceConfig
 local noice_config = {
-    format = {
-        telescope = require("telescope").load_extension("noice"),
-        telescope_preview = require("telescope").load_extension("noice"),
+    popupmenu = {
+        enabled = false,
+    },
+    messages = {
+        enabled = true,
+        view = "notify",
+        view_error = "notify",
+        view_warn = "mini",
+    },
+    routes = {
+        {
+            view = "mini",
+            filter = {
+                event = { "msg_show", "msg_showmode" },
+                ["not"] = {
+                    kind = { "confirm", "confirm_sub" },
+                },
+            },
+        },
+        {
+            filter = {
+                event = "cmdline",
+                find = "^%s*[/?]",
+            },
+            view = "cmdline",
+        },
     },
     lsp = {
         progress = {
             enabled = true,
-            view = "notify",
         },
         override = {
             ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
@@ -18,16 +40,17 @@ local noice_config = {
         },
     },
     presets = {
+        command_palette = true,
         bottom_search = true,
         long_message_to_split = true,
-        inc_rename = true,
-        lsp_doc_border = true,
+        inc_rename = false,
+        lsp_doc_border = false,
     },
     views = {
         cmdline_popup = {
             border = {
                 style = "none",
-                padding = { 2, 2 },
+                padding = { 1, 1 },
             },
             filter_options = {},
             win_options = {

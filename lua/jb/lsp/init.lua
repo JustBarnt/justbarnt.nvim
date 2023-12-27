@@ -155,30 +155,43 @@ local servers = {
     },
     cmake = {},
     clangd = {
+        keys = {
+            { "<leader>cR", "<cmd>ClangdSwitchSourceHeader<cr>", desc = "Switch Source/Header (C/C++)" },
+        },
+        root_dir = function(fname)
+            return require("lspconfig.util").root_pattern(
+                "Makefile",
+                "configure.ac",
+                "configure.in",
+                "config.h.in",
+                "meson.build",
+                "meson_options.txt",
+                "build.ninja"
+            )(fname) or require("lspconfig.util").root_pattern("compile_commands.json", "compile_flags.txt")(
+                    fname
+                ) or require("lspconfig.util").find_git_ancestor(fname)
+        end,
+        capabilities = {
+            offsetEncoding = { "utf-16" },
+        },
         cmd = {
             "clangd",
             "--background-index",
-            "--suggest-missing-includes",
             "--clang-tidy",
             "--header-insertion=iwyu",
+            "--completion-style=detailed",
+            "--function-arg-placeholders",
+            "--fallback-style=llvm",
         },
         init_options = {
+            usePlaceholders = true,
+            completeUnimported = true,
             clangdFileStatus = true,
         },
-        filetypes = {
-            "c","cpp"
-        }
-    },
+    },   
     powershell_es = {
         bundle_path = vim.fn.stdpath("data") .. "/mason/packages/powershell-editor-services",
         shell = "pwsh.exe",
-        --[[ cmd = {
-            "pwsh",
-            "-NoLogo",
-            "-NoProfile",
-            "-Command",
-            vim.fn.stdpath("data") .. "/mason/packages/powershell-editor-services",
-        }, ]]
         root_dir = function(fname)
             local path = require("lspconfig").util.root_pattern("*_profile.ps1") or "*.ps1"
             return path(fname)
