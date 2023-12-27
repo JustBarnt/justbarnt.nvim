@@ -1,89 +1,43 @@
 ---@diagnostic disable: missing-fields
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
 
--- Dont show "dumb matching stuff" https://github.com/tjdevries/confing_manager/blob/master/xdg_config/nvim/after/plugin/completion.lua#L5C39-L5C39
-vim.opt.shortmess:append("c")
-
 local ok, lspkind = pcall(require, "lspkind")
 if not ok then
     return
 end
 
-lspkind.init({
-    symbol_map = {
-        Copilot = "",
-    },
-})
-vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
-
 local cmp = require("cmp")
 
 cmp.setup({
     mapping = {
-        ["<C-d>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
-        ["<C-u>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
-        ["<C-p>"] = cmp.mapping.scroll_docs(-4),
-        ["<C-n>"] = cmp.mapping.scroll_docs(4),
+        ["<C-n>"] = cmp.mapping.select_next_item(),
+        ["<C-p>"] = cmp.mapping.select_prev_item(),
+        ["<C-d>"] = cmp.mapping.scroll_docs(-4),
+        ["<C-u>"] = cmp.mapping.scroll_docs(4),
         ["<C-e>"] = cmp.mapping.abort(),
-        ["<CR>"] = cmp.mapping(
-            cmp.mapping.confirm({
-                behavior = cmp.ConfirmBehavior.Insert,
-                select = true,
-            }),
-            { "i", "c" }
-        ),
-        ["<M-y>"] = cmp.mapping(
-            cmp.mapping.confirm({
-                behavior = cmp.ConfirmBehavior.Replace,
-                select = false,
-            }),
-            { "i", "c" }
-        ),
-
-        ["<c-space>"] = cmp.mapping({
-            i = cmp.mapping.complete(),
-            c = function(
-                _ --[[fallback]]
-            )
-                if cmp.visible() then
-                    if not cmp.confirm({ select = true }) then
-                        return
-                    end
-                else
-                    cmp.complete()
-                end
-            end,
-        }),
-
-        -- ["<tab>"] = false,
-        ["<tab>"] = cmp.config.disable,
-
-        -- ["<tab>"] = cmp.mapping {
-        --   i = cmp.config.disable,
-        --   c = function(fallback)
-        --     fallback()
-        --   end,
-        -- },
-
-        -- Testing
-        ["<c-q>"] = cmp.mapping.confirm({
+        ["<CR>"] = cmp.mapping(cmp.mapping.confirm({
             behavior = cmp.ConfirmBehavior.Replace,
-            select = false,
-        }),
+            select = true,
+        })),
+        ["<tab>"] = cmp.mapping(cmp.mapping.confirm({ select = true }), { "i", "s", "c" }),
     },
     sources = cmp.config.sources({
         { name = "nvim_lua" },
         { name = "nvim_lsp" },
         { name = "luasnip" },
-        { name = "copilot" },
-        { name = "eruby" },
     }, {
         { name = "path" },
         { name = "buffer", keyword_length = 5 },
     }, {
         { name = "gh_issues" },
     }),
-
+    completion = {
+        autocomplete = {
+            cmp.TriggerEvent.TextChanged,
+            cmp.TriggerEvent.InsertEnter,
+        },
+        completeopt = "menu,menuone,noselect",
+    },
     sorting = {
         -- TODO: Would be cool to add stuff like "See variable names before method names" in rust, or something like that.
         comparators = {
@@ -127,6 +81,7 @@ cmp.setup({
                 buffer = "[buf]",
                 nvim_lsp = "[LSP]",
                 nvim_lua = "[api]",
+                cmdline = "[cmdline]",
                 path = "[path]",
                 luasnip = "[snip]",
                 gh_issues = "[issues]",
@@ -146,9 +101,9 @@ cmp.setup({
     },
 })
 
-_ = vim.cmd([[
-    augroup DadbodSql
-        au!
-        autocmd FileType sql,mysql,plsql lua require('cmp').setup.buffer { sources = { { name = "vim-dadbod-completion" } } }
-    augroup END
-]])
+cmp.setup.cmdline(":", {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = {
+        { name = "cmdline" },
+    },
+})
