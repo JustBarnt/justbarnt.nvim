@@ -77,11 +77,15 @@ cmp.setup({
         -- Youtube: How to set up nice formatting for your sources.
         format = lspkind.cmp_format({
             with_text = true,
+            mode = "text",
+            maxwidth = function()
+                return math.floor(vim.o.columns * 0.45)
+            end,
             menu = {
                 buffer = "[buf]",
                 nvim_lsp = "[LSP]",
                 nvim_lua = "[api]",
-                cmdline = "[cmdline]",
+                cmdline = "[>_]",
                 path = "[path]",
                 luasnip = "[snip]",
                 gh_issues = "[issues]",

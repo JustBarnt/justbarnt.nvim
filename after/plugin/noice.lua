@@ -48,12 +48,18 @@ local noice_config = {
     },
     views = {
         cmdline_popup = {
+            position = "50%",
+            size = {
+                width = 60,
+                height = "auto",
+            },
             border = {
                 style = "none",
                 padding = { 1, 1 },
             },
             filter_options = {},
             win_options = {
+                winblend = 0,
                 winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder",
             },
         },
