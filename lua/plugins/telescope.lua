@@ -22,7 +22,7 @@ return {
             end
 
             local telescope = require("telescope")
-            local t = require("lua.core.telescope_modules")
+            local t = require("core.telescope_modules")
 
             telescope.setup({
                 defaults = {

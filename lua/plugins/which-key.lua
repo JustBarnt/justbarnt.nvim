@@ -39,7 +39,7 @@ return {
             },
         }
 
-        local registers = require("lua.core.which-key.registers")
+        local registers = require("core.which-key.registers")
         wk.setup(opts)
         wk.register(registers.defaults, {
             mode = "n",
