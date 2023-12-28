@@ -266,10 +266,6 @@ require("conform").setup({
         javascript = { { "prettierd", "prettier" } },
         cmake = { "cmake_format" },
     },
-    format_on_save = {
-        timeout_ms = 500,
-        lsp_fallback = true,
-    },
 })
 
 vim.api.nvim_create_autocmd("BufWritePre", {
