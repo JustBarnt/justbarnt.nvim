@@ -19,7 +19,7 @@ end
 
 local remap = require("core.utils").remap
 
-local autocmd = require("jb.auto")
+local autocmd = require("lua.core.auto")
 local autocmd_clear = vim.api.nvim_clear_autocmds
 local handlers = require("jb.lsp.handlers")
 local ts_util = require("nvim-lsp-ts-utils")
@@ -168,8 +168,8 @@ local servers = {
                 "meson_options.txt",
                 "build.ninja"
             )(fname) or require("lspconfig.util").root_pattern("compile_commands.json", "compile_flags.txt")(
-                    fname
-                ) or require("lspconfig.util").find_git_ancestor(fname)
+                fname
+            ) or require("lspconfig.util").find_git_ancestor(fname)
         end,
         capabilities = {
             offsetEncoding = { "utf-16" },
@@ -188,7 +188,7 @@ local servers = {
             completeUnimported = true,
             clangdFileStatus = true,
         },
-    },   
+    },
     powershell_es = {
         bundle_path = vim.fn.stdpath("data") .. "/mason/packages/powershell-editor-services",
         shell = "pwsh.exe",

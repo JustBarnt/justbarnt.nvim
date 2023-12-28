@@ -1,4 +1,4 @@
-require("jb.globals")
+require("core.globals")
 -- Set our preferred options
 require("core.options")
 require("core.autocmds")

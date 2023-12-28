@@ -16,7 +16,4 @@ return {
             })
         end,
     },
-    {
-        "justbarnt/dotenv.nvim",
-    },
 }
