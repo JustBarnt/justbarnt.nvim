@@ -14,8 +14,6 @@ local init = function()
 
     map("n", "<leader>sc", ':let @/ = ""<CR>')
 
-    map("n", "<leader>ca", ":%y<CR>", "[C]opy [A]ll")
-
     -- Fix keybind descrepancy between nvims builtin matchit (%) and nvim-comment plugin
     map("n", "_gc", "<cmd><C-U>call CommentOperator(visualmode())<CR>")
 

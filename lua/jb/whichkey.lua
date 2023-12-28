@@ -1,6 +1,5 @@
 require("which-key.plugins.presets").operators["v"] = nil
 require("which-key.plugins.presets").operators["x"] = nil
-
 require("which-key").register({
     ["<leader>c"] = { name = "[C]ode", _ = "which_key_ignore" },
     ["<leader>d"] = { name = "[D]ocument", _ = "which_key_ignore" },

@@ -1,5 +1,7 @@
 local opt = vim.opt
 
+--TODO: Put all opts in a table, then just loop through table setting the opts
+
 -- Assumes you are on windows with python installed in you appdata folder (default) install path
 local home_path = os.getenv("HOMEPATH")
 vim.g.python3_host_prog = "C:" .. home_path .. "/AppData/Local/Programs/Python/Python3/python.exe"

@@ -1,6 +1,7 @@
 require("jb.globals")
 -- Set our preferred options
 require("core.options")
+require("core.autocmds")
 -- Get and active our keymaps
 local keymaps = require("core.keymaps")
 keymaps.init() -- Base keybinds
