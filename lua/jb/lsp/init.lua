@@ -19,7 +19,7 @@ end
 
 local remap = require("core.utils").remap
 
-local autocmd = require("core.auto")
+local autocmd = require("lua.core.auto")
 local autocmd_clear = vim.api.nvim_clear_autocmds
 local handlers = require("jb.lsp.handlers")
 local ts_util = require("nvim-lsp-ts-utils")
@@ -118,7 +118,10 @@ local servers = {
     lua_ls = {
         Lua = {
             workspace = {
-                checkThirdParty = false,
+                checkThirdParty = true,
+                library = {
+                    vim.fn.stdpath("data") .. "/lazy/",
+                },
             },
             hint = {
                 enable = true,

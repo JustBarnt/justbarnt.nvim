@@ -1,4 +1,4 @@
-local protocol = require "vim.lsp.protocol"
+local protocol = require("vim.lsp.protocol")
 
 _LspMessageBuffer = _LspMessageBuffer or vim.api.nvim_create_buf(false, true)
 
@@ -42,7 +42,7 @@ end
 
 -- TODO: map this to a keybind :)
 function LspShowMessageBuffer()
-    vim.cmd [[new]]
+    vim.cmd([[new]])
     vim.cmd([[buffer ]] .. _LspMessageBuffer)
 end
 
@@ -73,10 +73,10 @@ return function(_, result, ctx)
 
     local win_id = create_little_window(messages)
     vim.cmd(string.format(
-    [[
+        [[
     autocmd CursorMoved * ++once :call nvim_win_close(%s, v:true)
     ]],
-    win_id
+        win_id
     ))
 
     return result
