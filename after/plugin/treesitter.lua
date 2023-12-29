@@ -29,15 +29,18 @@ end)()
 ---@diagnostic disable: missing-fields
 require("nvim-treesitter.configs").setup({
     ensure_installed = {
+        "bash",
         "html",
         "javascript",
         "json",
         "markdown",
+        "markdown_inline",
         "toml",
         "tsx",
         "typescript",
         "vim",
         "lua",
+        "regex",
         "svelte",
         "c_sharp",
         "cmake",

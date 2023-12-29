@@ -1,8 +1,4 @@
 # Plugins to Add/Switch
-- [ ] Git Integration
-    - Finish gitsigns setup
-    - Commit Message
-    - Diff View
 - [ ] [Telescope File Browser](https://github.com/nvim-telescope/telescope-file-browser.nvim)
 - [ ] [Detour.nvim](https://github.com/carbon-steel/detour.nvim)
 - [ ] [Nougat.nvim](https://github.com/MunifTanjim/nougat.nvim) -> Lualline

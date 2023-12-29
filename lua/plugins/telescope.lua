@@ -129,7 +129,7 @@ return {
                 -- You can pass additional configuration to telescope to change theme, layout, etc.
                 t.builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
                     winblend = 3,
-                    previewer = true,
+                    previewer = false,
                 }))
             end, { desc = "[/] Fuzzily search in current buffer" })
 
