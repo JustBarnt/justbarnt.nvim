@@ -2,10 +2,11 @@ local neodev = vim.F.npcall(require, "neodev")
 
 if neodev then
     neodev.setup({
-        override = function(_, library)
-            library.enabled = true
-            library.plugins = true
-        end,
+        library = {
+            enabled = true,
+            types = true,
+            plugins = vim.fn.stdpath("data") .. "/lazy/",
+        },
         lspconfig = true,
         pathStrict = true,
     })
@@ -118,10 +119,7 @@ local servers = {
     lua_ls = {
         Lua = {
             workspace = {
-                checkThirdParty = true,
-                library = {
-                    vim.fn.stdpath("data") .. "/lazy/",
-                },
+                checkThirdParty = false,
             },
             hint = {
                 enable = true,
