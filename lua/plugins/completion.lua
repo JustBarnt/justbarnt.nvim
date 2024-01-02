@@ -5,6 +5,11 @@ return {
     { "hrsh7th/cmp-cmdline" },
     { "hrsh7th/cmp-nvim-lua" },
     { "onsails/lspkind-nvim" },
-    { "hrsh7th/nvim-cmp" },
+    {
+        "hrsh7th/nvim-cmp",
+        config = function()
+            require("lua.plugins.cmp.completion")
+        end,
+    },
     { "saadparwaiz1/cmp_luasnip", dependencies = { "L3MON4D3/LuaSnip" } },
 }
