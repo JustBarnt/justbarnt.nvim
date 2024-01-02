@@ -8,7 +8,7 @@ return {
     {
         "hrsh7th/nvim-cmp",
         config = function()
-            require("lua.plugins.cmp.completion")
+            require("plugins.cmp.completion")
         end,
     },
     { "saadparwaiz1/cmp_luasnip", dependencies = { "L3MON4D3/LuaSnip" } },

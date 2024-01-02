@@ -1,6 +1,13 @@
 return {
-    "nvim-telescope/telescope-file-browser.nvim",
-    "nvim-telescope/telescope-hop.nvim",
+    {
+        --Works significantly better if `fd` is installed Windows: `choco install fd`
+        "nvim-telescope/telescope-file-browser.nvim",
+        dependencies = {
+            "nvim-telescope/telescope.nvim",
+            "nvim-lua/plenary.nvim",
+        },
+        config = function() end,
+    },
     "nvim-telescope/telescope-ui-select.nvim",
     {
         "nvim-telescope/telescope-fzf-native.nvim",
@@ -25,6 +32,11 @@ return {
             local t = require("core.telescope_modules")
 
             telescope.setup({
+                extensions = {
+                    file_browser = {
+                        hijack_netrw = true,
+                    },
+                },
                 defaults = {
                     prompt_prefix = "> ",
                     selection_caret = "> ",
@@ -133,6 +145,12 @@ return {
                 }))
             end, { desc = "[/] Fuzzily search in current buffer" })
 
+            vim.keymap.set(
+                "n",
+                "<leader>fb",
+                ":Telescope file_browser path=%:p:h select_buffer=true<CR>",
+                { desc = "Seach [F]ile [B]rowser" }
+            )
             vim.keymap.set("n", "<leader>gf", t.builtin.git_files, { desc = "Search [G]it [F]iles" })
             vim.keymap.set("n", "<leader>sf", t.builtin.find_files, { desc = "[S]earch [F]iles" })
             vim.keymap.set("n", "<leader>sh", t.builtin.help_tags, { desc = "[S]earch [H]elp" })
@@ -140,6 +158,9 @@ return {
             vim.keymap.set("n", "<leader>sg", t.builtin.live_grep, { desc = "[S]earch by [G]rep" })
             vim.keymap.set("n", "<leader>sd", t.builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
             vim.keymap.set("n", "<leader>sr", t.builtin.resume, { desc = "[S]earch [R]esume" })
+
+            require("telescope").load_extension("file_browser")
+            require("telescope").load_extension("ui-select")
         end,
     },
 }

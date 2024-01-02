@@ -16,6 +16,7 @@
 
 ## Fixes
 - [ ] Which-key has issues when either disabling presets or disabling marks/registers
+- [ ] Ensure that `vim.lsp_buf.code_actions` is working and integrate into Telescope if possible
 
 ## Color
 - [ ] Update FloatBorder to make popups clearer

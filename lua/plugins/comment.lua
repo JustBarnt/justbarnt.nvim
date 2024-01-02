@@ -1,26 +1,20 @@
+---@diagnostic disable:missing-fields
 return {
     {
         "numToStr/Comment.nvim",
         config = function()
+            if not pcall(require, "Comment") then
+                return
+            end
+
             require("Comment").setup({
                 -- LHS of operator-pending mapping in NORMAL + VISUAL mode
                 opleader = {
                     line = "gc",
                     block = "gb",
                 },
-                padding = true,
-                sticky = true,
-                ignore = nil,
-                extra = {
-                    above = "gcO",
-                    below = "gco",
-                    eol = "gcA",
-                },
-                pre_hook = nil,
-                post_hook = nil,
                 -- Create basic (operator-pending) and extended mappings for NORMAL + VISUAL mode
                 mappings = {
-
                     -- operator-pending mapping
                     -- Includes:
                     --  `gcc`               -> line-comment  the current line
@@ -46,11 +40,15 @@ return {
                     -- Same as above
                     block = "gbc",
                 },
+
+                pre_hook = nil,
+                post_hook = nil,
+                ignore = nil,
             })
 
             local comment_ft = require("Comment.ft")
             -- TODO: May want to set this for other languages, js, ts, etc.
-            comment_ft.set("lua", { "--%", "--[[%s]]" })
+            comment_ft.set("lua", { "--%s", "--[[%s]]" })
         end,
     },
 }

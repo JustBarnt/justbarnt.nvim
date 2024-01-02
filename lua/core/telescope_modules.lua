@@ -5,6 +5,7 @@ local M = {
     action_state = require("telescope.actions.state"),
     action_layout = require("telescope.actions.layout"),
     putils = require("telescope.previewers.utils"),
+    extensions = require("telescope").extensions,
 }
 
 return M
