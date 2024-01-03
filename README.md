@@ -3,6 +3,7 @@
 - [ ] [GitSigns](https://github.com/lewis6991/gitsigns.nvim)
 - [ ] [Neogit](https://github.com/TimUntersberger/neogit)
 - [ ] [Nvim-Ts-Autotag](https://github.com/windwp/nvim-ts-autotag)
+- [ ] [Fidget](https://github.com/j-hui/fidget.nvim) Replacement for noice/notify
 
 ## Fun/Dev Plugins
 - [ ] [Boilit](https://github.com/gennaro-tedesco/boilit)
