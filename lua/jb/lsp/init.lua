@@ -32,26 +32,9 @@ local custom_init = function(client)
 end
 
 local augroup_highlight = vim.api.nvim_create_augroup("custom-lsp-references", { clear = true })
-local augroup_codelens = vim.api.nvim_create_augroup("custom-lsp-codelens", { clear = true })
 
 local filetype_attach = setmetatable({}, {
     {
-        --[[ intelephense = function()
-            autocmd_clear({ group = augroup_codelens, buffer = 0 })
-            autocmd({
-                { "bufenter", "bufwritepost", "cursorhold" },
-                augroup_codelens,
-                require("jb.lsp.codelens").refresh_virtlines,
-                0,
-            })
-
-            vim.keymap.set(
-                "n",
-                "<leader>tt",
-                require("jb.lsp.codelens").toggle_virtlines,
-                { silent = true, desc = "[t]oggle [t]ypes", buffer = 0 }
-            )
-        end, ]]
         __index = function()
             return function() end
         end,
@@ -73,7 +56,7 @@ local custom_attach = function(client, bufnr)
     vim.keymap.set("n", "gd", function()
         vim.lsp.buf.definition({ reuse_win = false })
         require("detour").Detour()
-    end, { desc = "Goto Definition" })
+    end, { desc = "Goto Defintion" })
 
     -- remap({ "n", "gd", vim.lsp.buf.definition })
     remap({ "n", "gD", vim.lsp.buf.declaration })
@@ -81,7 +64,6 @@ local custom_attach = function(client, bufnr)
     remap({ "n", "K", vim.lsp.buf.hover, { desc = "lsp:hover" } })
 
     remap({ "n", "<leader>gI", handlers.implementation })
-    remap({ "n", "<leader>lr", "<cmd>lua R('jb.lsp.codelens').run()<CR>" })
     remap({ "n", "<leader>rr", "LspRestart" })
 
     vim.bo.omnifunc = "v:lua.vim.lsp.omnifunc"
@@ -91,14 +73,6 @@ local custom_attach = function(client, bufnr)
         autocmd_clear({ group = augroup_highlight, buffer = bufnr })
         autocmd({ "CursorHold", augroup_highlight, vim.lsp.buf.document_highlight, bufnr })
         autocmd({ "CursorMoved", augroup_highlight, vim.lsp.buf.clear_references, bufnr })
-    end
-
-    if false and client.server_capabilities.codeLensProvider then
-        if filetype ~= "elm" then
-            autocmd_clear({ group = augroup_codelens, buffer = bufnr })
-            autocmd({ "BufEnter", augroup_codelens, vim.lsp.codelens.refresh, bufnr, once = true })
-            autocmd({ { "BufWritePost", "CursorHold" }, augroup_codelens, vim.lsp.codelens.refresh, bufnr })
-        end
     end
 
     if filetype == "typescript" or filetype == "lua" then
