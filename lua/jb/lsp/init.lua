@@ -70,7 +70,12 @@ local custom_attach = function(client, bufnr)
     remap({ "n", "<leader>cr", vim.lsp.buf.rename })
     remap({ "n", "<leader>ca", vim.lsp.buf.code_action })
 
-    remap({ "n", "gd", vim.lsp.buf.definition })
+    vim.keymap.set("n", "gd", function()
+        vim.lsp.buf.definition({ reuse_win = false })
+        require("detour").Detour()
+    end, { desc = "Goto Definition" })
+
+    -- remap({ "n", "gd", vim.lsp.buf.definition })
     remap({ "n", "gD", vim.lsp.buf.declaration })
     remap({ "n", "gT", vim.lsp.buf.type_definition })
     remap({ "n", "K", vim.lsp.buf.hover, { desc = "lsp:hover" } })
