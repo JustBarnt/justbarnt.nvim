@@ -81,8 +81,22 @@ local plugins = function()
     map("n", "<leader>nh", ":DiffviewFileHistory %<CR>", "View History")
 end
 
+local telescope = function()
+    local tm = require("core.telescope_modules")
+    vim.keymap.set("n", "<leader>gf", tm.builtin.git_files, { desc = "Search [G]it [F]iles" })
+    vim.keymap.set("n", "<leader>sf", tm.builtin.find_files, { desc = "[S]earch [F]iles" })
+    vim.keymap.set("n", "<leader>sh", tm.builtin.help_tags, { desc = "[S]earch [H]elp" })
+    vim.keymap.set("n", "<leader>sw", tm.builtin.grep_string, { desc = "[S]earch current [W]ord" })
+    vim.keymap.set("n", "<leader>sg", tm.builtin.live_grep, { desc = "[S]earch by [G]rep" })
+    vim.keymap.set("n", "<leader>sd", tm.builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
+    vim.keymap.set("n", "<leader>sr", tm.builtin.resume, { desc = "[S]earch [R]esume" })
+
+    -- TODO: Add in file browser keymaps
+end
+
 -- Return keymap modules
 return {
     init = init,
     plugins = plugins,
+    telescope = telescope,
 }

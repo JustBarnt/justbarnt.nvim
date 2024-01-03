@@ -56,8 +56,7 @@ return {
                     end,
 
                     winblend = 0,
-
-                    layout_strategy = "horizontal",
+                    layout_strategy = "flex", --horizontal, vertical, center, cursor
                     layout_config = {
                         width = 0.95,
                         height = 0.85,
@@ -151,14 +150,8 @@ return {
                 ":Telescope file_browser path=%:p:h select_buffer=true<CR>",
                 { desc = "Seach [F]ile [B]rowser" }
             )
-            vim.keymap.set("n", "<leader>gf", t.builtin.git_files, { desc = "Search [G]it [F]iles" })
-            vim.keymap.set("n", "<leader>sf", t.builtin.find_files, { desc = "[S]earch [F]iles" })
-            vim.keymap.set("n", "<leader>sh", t.builtin.help_tags, { desc = "[S]earch [H]elp" })
-            vim.keymap.set("n", "<leader>sw", t.builtin.grep_string, { desc = "[S]earch current [W]ord" })
-            vim.keymap.set("n", "<leader>sg", t.builtin.live_grep, { desc = "[S]earch by [G]rep" })
-            vim.keymap.set("n", "<leader>sd", t.builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
-            vim.keymap.set("n", "<leader>sr", t.builtin.resume, { desc = "[S]earch [R]esume" })
 
+            require("core.keymaps").telescope()
             require("telescope").load_extension("file_browser")
             require("telescope").load_extension("ui-select")
         end,

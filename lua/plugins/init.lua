@@ -1,5 +1,8 @@
 return {
-    { "nvim-lua/plenary.nvim", dev = false },
+    {
+        "nvim-lua/plenary.nvim",
+        dev = false,
+    },
     "milisims/nvim-luaref", -- Adds help refs to built-in lua functions
     {
         "kylechui/nvim-surround",
