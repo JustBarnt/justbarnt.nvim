@@ -8,6 +8,7 @@ return {
         },
         config = function() end,
     },
+    "smartpde/telescope-recent-files",
     "nvim-telescope/telescope-ui-select.nvim",
     {
         "nvim-telescope/telescope-fzf-native.nvim",
@@ -32,11 +33,6 @@ return {
             local t = require("core.telescope_modules")
 
             telescope.setup({
-                extensions = {
-                    file_browser = {
-                        hijack_netrw = true,
-                    },
-                },
                 defaults = {
                     prompt_prefix = "> ",
                     selection_caret = "> ",
