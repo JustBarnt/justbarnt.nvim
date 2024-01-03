@@ -2,6 +2,9 @@ local keymap = vim.keymap
 local g = vim.g -- global settings
 
 local map = function(mode, keys, func, desc)
+    if not desc then
+        desc = nil
+    end
     keymap.set(mode, keys, func, { desc = desc, silent = true })
 end
 -------------------------------------
@@ -27,10 +30,10 @@ local init = function()
     -- Center when joining lines
     map("n", "J", "mzJ`z")
     -- Move Between Panes: Useful for ToggleTerm if using Tabline (Open Buffers in Tabs like VSCode)
-    map("n", "<C-h>", [[<Cmd>wincmd h<CR>]], "Move Pane: Left")
-    map("n", "<C-j>", [[<Cmd>wincmd j<CR>]], "Move Pane: Down")
-    map("n", "<C-k>", [[<Cmd>wincmd k<CR>]], "Move Pane: Up")
-    map("n", "<C-l>", [[<Cmd>wincmd l<CR>]], "Move Pane: Right")
+    map({ "n", "t" }, "<C-h>", [[<Cmd>wincmd h<CR>]], "Move Pane: Left")
+    map({ "n", "t" }, "<C-j>", [[<Cmd>wincmd j<CR>]], "Move Pane: Down")
+    map({ "n", "t" }, "<C-k>", [[<Cmd>wincmd k<CR>]], "Move Pane: Up")
+    map({ "n", "t" }, "<C-l>", [[<Cmd>wincmd l<CR>]], "Move Pane: Right")
 
     -- Easy return to normal mode
     keymap.set("i", "jk", "<ESC>", { silent = true, desc = "Return to normal mode" })
@@ -74,11 +77,10 @@ end
 ----------------------
 --- Plugin keymaps ---
 ----------------------
-
-local plugins = function()
-    -- diff view
-    map("n", "<leader>vd", ":DiffviewOpen<CR>", "View Diff")
-    map("n", "<leader>nh", ":DiffviewFileHistory %<CR>", "View History")
+local FTerm = function()
+    map("t", "jk", [[<C-\><C-n>]], { silent = true })
+    map("t", "<ESC>", [[<C-\><C-n>]], { silent = true })
+    map("t", "<C-w>", [[<C-\><C-n><C-w>]], { silent = true })
 end
 
 local telescope = function()
@@ -97,6 +99,6 @@ end
 -- Return keymap modules
 return {
     init = init,
-    plugins = plugins,
+    FTerm = FTerm,
     telescope = telescope,
 }
