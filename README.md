@@ -1,6 +1,5 @@
 # Plugins to Add/Switch
 - [ ] [Telescope File Browser](https://github.com/nvim-telescope/telescope-file-browser.nvim)
-- [ ] [Detour.nvim](https://github.com/carbon-steel/detour.nvim)
 - [ ] [FTerm](https://github.com/numToStr/FTerm.nvim)
 - [ ] [Git-Blame](https://github.com/f-person/git-blame.nvim)
 - [ ] [GitSigns](https://github.com/lewis6991/gitsigns.nvim)
@@ -23,6 +22,9 @@
 
 ### Installed and Setup to default, but need to customize
 - [ ] [Nougat.nvim](https://github.com/MunifTanjim/nougat.nvim) -> Lualline
+- [ ] [Detour.nvim](https://github.com/carbon-steel/detour.nvim)
+    - Figured out how to redirect vim.lsp.buf actions to detour, just need to setup for the rest of the actions I want 
+      redirected.
 
 # Note
 - When in a Telescope prompt `<C-S>/<C-V>` will open the current file under cursor in a split/verticly split window.
