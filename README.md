@@ -1,6 +1,4 @@
 # Plugins to Add/Switch
-- [ ] [Telescope File Browser](https://github.com/nvim-telescope/telescope-file-browser.nvim)
-- [ ] [FTerm](https://github.com/numToStr/FTerm.nvim)
 - [ ] [Git-Blame](https://github.com/f-person/git-blame.nvim)
 - [ ] [GitSigns](https://github.com/lewis6991/gitsigns.nvim)
 - [ ] [Neogit](https://github.com/TimUntersberger/neogit)
@@ -21,6 +19,7 @@
 - [ ] Update FloatBorder to make popups clearer
 
 ### Installed and Setup to default, but need to customize
+- [ ] [Telescope File Browser](https://github.com/nvim-telescope/telescope-file-browser.nvim)
 - [ ] [Nougat.nvim](https://github.com/MunifTanjim/nougat.nvim) -> Lualline
 - [ ] [Detour.nvim](https://github.com/carbon-steel/detour.nvim)
     - Figured out how to redirect vim.lsp.buf actions to detour, just need to setup for the rest of the actions I want 
@@ -28,3 +27,7 @@
 
 # Note
 - When in a Telescope prompt `<C-S>/<C-V>` will open the current file under cursor in a split/verticly split window.
+- `gx` opens a link under the cursor in your browser window. But supposedly does not work if netrw is disabled.
+
+#### Completed
+- [X] [FTerm](https://github.com/numToStr/FTerm.nvim)
