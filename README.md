@@ -25,6 +25,7 @@
 # Note
 - When in a Telescope prompt `<C-S>/<C-V>` will open the current file under cursor in a split/verticly split window.
 - `gx` opens a link under the cursor in your browser window. But supposedly does not work if netrw is disabled.
+- look into arrow.nvim, mikesmithgh/nvim, and hardtime.nvim
 
 #### Completed
 - [X] [FTerm](https://github.com/numToStr/FTerm.nvim)
