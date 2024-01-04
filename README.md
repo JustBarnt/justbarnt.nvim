@@ -1,13 +1,12 @@
 # Maybe rebuild config and start with Cybernvim? [CyberNvim](https://github.com/pgosar/CyberNvim)
 
-Rebuild JIRA plugin forked at https://github.com/justbarnt/jira-nvim
-
 # Plugins to Add/Switch
 - [ ] [fugitive.vim](https://github.com/tpope/vim-fugitive) - The top of the line vim git integration
 - [ ] [Nvim-Ts-Autotag](https://github.com/windwp/nvim-ts-autotag) - Use treesitter to auto close tags
 - [ ] [nvim-spectre](https://github.com/nvim-pack/nvim-spectre) - Much more powerful regex search and replace
 - [ ] [hardtime.nvim](https://github.com/m4xshen/hardtime.nvim) - Create better nvim motion/movement habits
-- [ ] [undotree](https://github.com/mbbill/undotree)
+- [ ] [undotree](https://github.com/mbbill/undotree) - Tree of all actions taken in a file, can create branches of a point 
+                                                       in the files history
 - [ ] [mini.nvim](https://github.com/echasnovski/mini.nvim) - Lots of useful modules that are tiny. Maybe add some or all?
 
 ## Fun/Dev Plugins
