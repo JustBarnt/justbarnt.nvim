@@ -4,7 +4,6 @@ return {
         dependencies = {
             "nvim-lua/plenary.nvim",
             "nvim-telescope/telescope.nvim",
-            "sindrets/diffview.nvim",
             "nvim-telescope/telescope-fzf-native.nvim",
         },
         config = function()
@@ -13,21 +12,36 @@ return {
                 print("failed to load neogit")
                 return
             end
-
+            local diffview = require("diffview")
             neogit.setup({
                 integrations = {
                     diffview = true,
                 },
             })
 
-            vim.keymap.set("n", "<space>vv", ":DiffviewOpen<CR>", { desc = "Diff View Open" })
+            vim.keymap.set("n", "<leader>dv", function()
+                -- Disable error cause open accepts no argurments to diff whole repo
+                ---@diagnostic disable-next-line
+                diffview.open()
+            end, { desc = "Diff View Open" })
 
-            vim.keymap.set("n", "<leader>gs", neogit.open, { desc = "[G]it [S]tatus" })
+            vim.keymap.set("n", "<leader>gs", function()
+                neogit.open({ kind = "auto" })
+            end, { desc = "[G]it [S]tatus" })
+
             vim.keymap.set("n", "<leader>gc", function()
-                neogit.open({ "commit" })
+                neogit.open({ "commit", kind = "auto" })
             end, {
                 desc = "[G]it [C]ommit",
             })
+        end,
+    },
+    {
+        "sindrets/diffview.nvim",
+        config = function()
+            local actions = require("diffview.actions")
+            local diffview = require("diffview")
+            diffview.setup({})
         end,
     },
     {
@@ -53,6 +67,4 @@ return {
         end,
     },
     "rhysd/committia.vim", -- Commit msgs
-    "sindrets/diffview.nvim", -- Diff helper
-    "Rawnly/gist.nvim", -- GIST HELPER
 }

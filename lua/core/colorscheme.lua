@@ -28,11 +28,11 @@ require("rose-pine").setup({
     bold_vert_split = true,
     disable_background = true,
     highlight_groups = {
-        ColorColumn = { bg = "rose", blend = 10 },
-
-        CursorLine = { bg = "foam", blend = 10 },
-        StatusLine = { fg = "love", bg = "love", blend = 10 },
+        ColorColumn = { bg = "pine", blend = 15 },
+        CursorLine = { bg = "iris", blend = 10 },
+        StatusLine = { fg = "iris", bg = "pine", blend = 10 },
         Search = { bg = "gold", inherit = false },
+        FloatBorder = { bg = "#1A1C33", blend = 50 },
     },
 })
 

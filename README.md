@@ -1,9 +1,8 @@
 # Plugins to Add/Switch
-- [ ] [Git-Blame](https://github.com/f-person/git-blame.nvim)
+- [ ] [fugitive.vim](https://github.com/tpope/vim-fugitive)
 - [ ] [GitSigns](https://github.com/lewis6991/gitsigns.nvim)
 - [ ] [Neogit](https://github.com/TimUntersberger/neogit)
 - [ ] [Nvim-Ts-Autotag](https://github.com/windwp/nvim-ts-autotag)
-- [ ] [Fidget](https://github.com/j-hui/fidget.nvim) Replacement for noice/notify
 
 ## Fun/Dev Plugins
 - [ ] [Boilit](https://github.com/gennaro-tedesco/boilit)
@@ -15,9 +14,6 @@
 ## Fixes
 - [ ] Which-key has issues when either disabling presets or disabling marks/registers
 - [ ] Ensure that `vim.lsp_buf.code_actions` is working and integrate into Telescope if possible
-
-## Color
-- [ ] Update FloatBorder to make popups clearer
 
 ### Installed and Setup to default, but need to customize
 - [ ] [Telescope File Browser](https://github.com/nvim-telescope/telescope-file-browser.nvim)
