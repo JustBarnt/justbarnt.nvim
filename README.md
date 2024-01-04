@@ -5,6 +5,8 @@
 - [ ] [Nvim-Ts-Autotag](https://github.com/windwp/nvim-ts-autotag) - Use treesitter to auto close tags
 - [ ] [nvim-spectre](https://github.com/nvim-pack/nvim-spectre) - Much more powerful regex search and replace
 - [ ] [hardtime.nvim](https://github.com/m4xshen/hardtime.nvim) - Create better nvim motion/movement habits
+- [ ] [undotree](https://github.com/mbbill/undotree)
+- [ ] [mini.nvim](https://github.com/echasnovski/mini.nvim) - Lots of useful modules that are tiny. Maybe add some or all?
 
 ## Fun/Dev Plugins
 - [ ] [Boilit](https://github.com/gennaro-tedesco/boilit)
