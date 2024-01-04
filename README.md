@@ -1,4 +1,6 @@
-# Maybe rebuild config and start with Cybernvim?
+# Maybe rebuild config and start with Cybernvim? [CyberNvim](https://github.com/pgosar/CyberNvim)
+
+Rebuild JIRA plugin forked at https://github.com/justbarnt/jira-nvim
 
 # Plugins to Add/Switch
 - [ ] [fugitive.vim](https://github.com/tpope/vim-fugitive) - The top of the line vim git integration
