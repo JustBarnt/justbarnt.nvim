@@ -1,6 +1,7 @@
 -- Set our preferred options
 require("core.options")
 require("core.autocmds")
+require("core.user_commands").Utils()
 -- Get and active our keymaps
 local keymaps = require("core.keymaps")
 keymaps.init() -- Base keybinds

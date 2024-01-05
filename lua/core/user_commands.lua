@@ -19,4 +19,8 @@ M.FTerm = function()
   ]]
 end
 
+M.Utils = function()
+    vim.api.nvim_create_user_command("Trim", require("core.utils").trim, { bang = true })
+end
+
 return M

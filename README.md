@@ -5,7 +5,7 @@
 - [ ] [Nvim-Ts-Autotag](https://github.com/windwp/nvim-ts-autotag) - Use treesitter to auto close tags
 - [ ] [nvim-spectre](https://github.com/nvim-pack/nvim-spectre) - Much more powerful regex search and replace
 - [ ] [hardtime.nvim](https://github.com/m4xshen/hardtime.nvim) - Create better nvim motion/movement habits
-- [ ] [undotree](https://github.com/mbbill/undotree) - Tree of all actions taken in a file, can create branches of a point 
+- [ ] [undotree](https://github.com/mbbill/undotree) - Tree of all actions taken in a file, can create branches of a point
                                                        in the files history
 - [ ] [mini.nvim](https://github.com/echasnovski/mini.nvim) - Lots of useful modules that are tiny. Maybe add some or all?
 
@@ -31,7 +31,7 @@
 - [ ] [Telescope File Browser](https://github.com/nvim-telescope/telescope-file-browser.nvim)
 - [ ] [Nougat.nvim](https://github.com/MunifTanjim/nougat.nvim) -> Lualline
 - [ ] [Detour.nvim](https://github.com/carbon-steel/detour.nvim)
-    - Figured out how to redirect vim.lsp.buf actions to detour, just need to setup for the rest of the actions I want 
+    - Figured out how to redirect vim.lsp.buf actions to detour, just need to setup for the rest of the actions I want
       redirected.
 - [ ] [Neogit](https://github.com/TimUntersberger/neogit) - Git UI (Potentially replace with vim-fugitive)
 - [ ] [GitSigns](https://github.com/lewis6991/gitsigns.nvim)

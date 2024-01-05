@@ -11,7 +11,12 @@ local M = {}
 --      - buffer number: The buffer as a number, passing 0 or nothing will apply the bind to all buffers (to apply the bind to): Defaults to 0
 
 M.remap = function(args)
-    if #args < 3 or type(args[1]) ~= "string" or type(args[2]) ~= "string" or (type(args[3]) ~= "function" and type(args[3]) ~= "string") then
+    if
+        #args < 3
+        or type(args[1]) ~= "string"
+        or type(args[2]) ~= "string"
+        or (type(args[3]) ~= "function" and type(args[3]) ~= "string")
+    then
         error("Invalid arguments. Expected at least three arguments: mode, key, func")
     end
 
@@ -22,6 +27,10 @@ M.remap = function(args)
     vim.keymap.set(args[1], args[2], args[3], { desc = desc, silent = silent, buffer = buffer })
 end
 
+M.trim = function()
+    local save = vim.fn.winsaveview()
+    vim.cmd("keeppatterns %s/\\s\\+$\\|\\r$//e")
+    vim.fn.winrestview(save)
+end
 
 return M
-
