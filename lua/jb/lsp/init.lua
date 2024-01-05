@@ -7,8 +7,6 @@ if neodev then
             types = true,
             plugins = vim.fn.stdpath("data") .. "/lazy/",
         },
-        lspconfig = true,
-        pathStrict = true,
     })
 end
 
@@ -97,17 +95,23 @@ local servers = {
     bashls = true,
     lua_ls = {
         Lua = {
+            runtime = {
+                version = "LuaJIT",
+                path = vim.split(package.path, ";"),
+            },
             workspace = {
+                library = {
+                    vim.env.VIMRUNTIME,
+                },
                 checkThirdParty = false,
             },
-            hint = {
-                enable = true,
-            },
             diagnostics = {
-                disable = {
-                    "missing-fields",
-                    "incomplete-signature-doc",
+                global = {
+                    "vim",
                 },
+            },
+            telemetry = {
+                enable = false,
             },
         },
     },
