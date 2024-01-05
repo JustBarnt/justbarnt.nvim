@@ -22,7 +22,6 @@ return {
         end,
     },
     "simrat39/inlay-hints.nvim",
-    "folke/neodev.nvim",
     "jose-elias-alvarez/nvim-lsp-ts-utils", -- TODO: repace with typescript.nvim
     "b0o/schemastore.nvim",
     {

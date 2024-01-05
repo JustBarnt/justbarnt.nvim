@@ -1,12 +1,17 @@
-local neodev = vim.F.npcall(require, "neodev")
+local neoconf, neodev = vim.F.npcall(require, "neoconf"), vim.F.npcall(require, "neodev")
 
-if neodev then
-    neodev.setup({
-        library = {
-            enabled = true,
-            types = true,
+if neoconf and neodev then
+    local opts = {
+        -- import existing settinsg from other plugins
+        import = {
+            vscode = false, -- local .vscode/settings.json
+            coc = false, -- global/local coc-settings.json
+            nlsp = false, -- global/local nlsp-settings.nvim json settings
         },
-    })
+    }
+
+    neoconf.setup(opts)
+    neodev.setup({})
 end
 
 local lspconfig = vim.F.npcall(require, "lspconfig")
@@ -96,16 +101,11 @@ local servers = {
         Lua = {
             runtime = {
                 version = "LuaJIT",
-                path = {
-                    vim.fn.stdpath("data") .. "\\lazy\\",
-                    vim.fn.expand(),
-                    "?/init.lua",
-                },
             },
             workspace = {
                 library = {
-                    vim.env.VIMRUNTIME,
-                    vim.fn.stdpath("data") .. "/lazy/",
+                    vim.api.nvim_get_runtime_file("", true),
+                    vim.fn.stdpath("data") .. "\\lazy\\",
                 },
                 checkThirdParty = true,
             },
