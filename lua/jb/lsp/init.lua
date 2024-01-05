@@ -239,9 +239,6 @@ for server, config in pairs(servers) do
     setup_server(server, config)
 end
 
--- Only run stylua when we can find a root dir
-require("conform.formatters.stylua").require_cwd = true
-
 require("conform").setup({
 
     formatters_by_ft = {
