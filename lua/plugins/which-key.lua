@@ -17,4 +17,33 @@ return {
 
         -- TODO: Register non_leader keybinds
     end,
+    {
+        "tris203/hawtkeys.nvim",
+        event = "VeryLazy",
+        lazy = true,
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+        },
+        config = function()
+            local hawtkeys = require("hawtkeys")
+
+            ---@class HawtKeyPartialConfig
+            local config = {
+                leader = " ",
+                homerow = 2,
+                powerFingers = { 2, 3, 6, 7 },
+                keyboardLayout = "qwerty",
+                customMaps = {
+                    ["wk.register"] = {
+                        method = "which_key",
+                    },
+                    ["lazy"] = {
+                        method = "lazy",
+                    },
+                },
+            }
+
+            hawtkeys.setup(config)
+        end,
+    },
 }

@@ -3,6 +3,7 @@ return {
         "nvim-lua/plenary.nvim",
         dev = false,
     },
+    "mateuszwieloch/automkdir.nvim",
     "milisims/nvim-luaref", -- Adds help refs to built-in lua functions
     {
         "kylechui/nvim-surround",

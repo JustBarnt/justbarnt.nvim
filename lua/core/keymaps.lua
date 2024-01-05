@@ -16,6 +16,7 @@ local init = function()
     g.maplocalleader = " "
 
     map("n", "<leader>sc", ':let @/ = ""<CR>')
+    map("n", "Q", "<Nop>")
     map("n", "q", "<Nop>")
     -- Fix keybind descrepancy between nvims builtin matchit (%) and nvim-comment plugin
     map("n", "_gc", "<cmd><C-U>call CommentOperator(visualmode())<CR>")
@@ -26,6 +27,9 @@ local init = function()
     -- Center cursor when navigating search results
     map("n", "n", "nzz")
     map("n", "N", "Nzz")
+
+    -- Greatest remap ever - Name: theprimeagen
+    map("x", "<leader>p", [["_dP]])
 
     -- Center when joining lines
     map("n", "J", "mzJ`z")

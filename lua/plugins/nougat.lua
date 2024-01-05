@@ -2,6 +2,7 @@ return {
     "MunifTanjim/nougat.nvim",
     config = function()
         local Nougat = require("nougat")
+        --Core.code is a 1 char code found using :h statusline
         local Core = require("nougat.core")
         local Bar = require("nougat.bar")
         local Item = require("nougat.item")
