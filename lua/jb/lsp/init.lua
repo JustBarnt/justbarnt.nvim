@@ -5,7 +5,6 @@ if neodev then
         library = {
             enabled = true,
             types = true,
-            plugins = vim.fn.stdpath("data") .. "/lazy/",
         },
     })
 end
@@ -97,13 +96,21 @@ local servers = {
         Lua = {
             runtime = {
                 version = "LuaJIT",
-                path = vim.split(package.path, ";"),
+                path = {
+                    vim.fn.stdpath("data") .. "\\lazy\\",
+                    vim.fn.expand(),
+                    "?/init.lua",
+                },
             },
             workspace = {
                 library = {
                     vim.env.VIMRUNTIME,
+                    vim.fn.stdpath("data") .. "/lazy/",
                 },
-                checkThirdParty = false,
+                checkThirdParty = true,
+            },
+            hint = {
+                enable = true,
             },
             diagnostics = {
                 global = {
