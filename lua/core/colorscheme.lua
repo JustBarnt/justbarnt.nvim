@@ -31,8 +31,9 @@ require("rose-pine").setup({
         ColorColumn = { bg = "pine", blend = 15 },
         CursorLine = { bg = "iris", blend = 10 },
         StatusLine = { fg = "iris", bg = "pine", blend = 10 },
-        Search = { bg = "gold", inherit = false },
+        Search = { fg = "iris", bg = "subtle", blend = 40 },
         FloatBorder = { bg = "#1A1C33", blend = 50 },
+        IncSearch = { fg = "iris", bg = "rose", blend = 40 },
     },
 })
 

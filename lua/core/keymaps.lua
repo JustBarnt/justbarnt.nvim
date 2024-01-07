@@ -31,6 +31,9 @@ local init = function()
     -- Greatest remap ever - Name: theprimeagen
     map("x", "<leader>p", [["_dP]])
 
+    map("i", "<C-b>", "<C-o>0")
+    map("i", "<C-a>", "<C-o>A")
+
     -- Center when joining lines
     map("n", "J", "mzJ`z")
     -- Move Between Panes: Useful for ToggleTerm if using Tabline (Open Buffers in Tabs like VSCode)
