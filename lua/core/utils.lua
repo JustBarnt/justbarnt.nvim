@@ -33,4 +33,16 @@ M.trim = function()
     vim.fn.winrestview(save)
 end
 
+---@return boolean
+M.found = function(module)
+    local found, _ = pcall(require, module)
+
+    if not found then
+        print("[ERROR] Module: " .. module .. " could not be loaded")
+        return false
+    end
+
+    return found
+end
+
 return M

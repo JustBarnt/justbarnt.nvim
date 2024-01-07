@@ -103,9 +103,30 @@ local telescope = function()
     -- TODO: Add in file browser keymaps
 end
 
+-- LSP Keybinds
+local lsp = function()
+    vim.keymap.set("i", "<C-s>", vim.lsp.buf.signature_help)
+
+    vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename)
+    vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action)
+
+    vim.keymap.set("n", "gd", function()
+        vim.lsp.buf.definition({ reuse_win = false })
+        require("detour").Detour()
+    end, { desc = "Goto Defintion" })
+
+    vim.keymap.set("n", "gD", vim.lsp.buf.declaration)
+    vim.keymap.set("n", "gT", vim.lsp.buf.type_definition)
+    vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "lsp:hover" })
+
+    vim.keymap.set("n", "<leader>gI", vim.lsp.buf.implementation)
+    vim.keymap.set("n", "<leader>rr", "LspRestart")
+end
+
 -- Return keymap modules
 return {
     init = init,
     FTerm = FTerm,
     telescope = telescope,
+    lsp = lsp
 }

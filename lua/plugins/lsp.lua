@@ -1,5 +1,5 @@
 return {
-    {
+    --[[ {
         "neovim/nvim-lspconfig",
         config = function()
             require("jb.lsp")
@@ -19,7 +19,7 @@ return {
         },
     },
     "williamboman/mason-lspconfig.nvim",
-
+ ]]
     {
         "WhoIsSethDaniel/mason-tool-installer.nvim",
         config = function()
