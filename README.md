@@ -1,6 +1,7 @@
 # Create my own Neovim distro
 
 # Plugins to Add/Switch
+- [ ] [legendary.nvim](https://github.com/mrjones2014/legendary.nvim) - VSCODE Command Pallete creator
 - [ ] [fugitive.vim](https://github.com/tpope/vim-fugitive) - The top of the line vim git integration
 - [ ] [Nvim-Ts-Autotag](https://github.com/windwp/nvim-ts-autotag) - Use treesitter to auto close tags
 - [ ] [nvim-spectre](https://github.com/nvim-pack/nvim-spectre) - Much more powerful regex search and replace
