@@ -7,16 +7,24 @@ vim.api.nvim_create_autocmd({ "BufReadPre" }, {
     callback = function(ev)
         if ev.file then
             local status, size = pcall(function() return vim.loop.fs_stat(ev.file).size end)
-            vim.notify('File Loaded: Size: ' .. size / 1024 .. "mb")
-            if status and size >= 1024 * 5120 then -- large file
+            vim.notify(type(ev.file))
+            vim.notify('File Size: ' .. size / (1024 * 1024) .. "mb")
+            if status and size >= 1024 * 1024 then -- large file
+                vim.notify("Large file. Optimizing for preformance")
                 vim.wo.wrap = false
-                old_eventignore= vim.o.eventignore
+                old_eventignore = vim.o.eventignore
                 large_file_opened = true
                 vim.o.eventignore = "FileType"
+                vim.bo.buftype = 'nowrite'
                 vim.bo.swapfile = false
                 vim.bo.bufhidden = 'unload'
-                vim.bo.buftype = 'nowrite'
                 vim.bo.undolevels = -1
+
+                local is_xml = string.find(ev.file, ".xml")
+                if is_xml then
+                    vim.o.eventignore = ""
+                    vim.bo.buftype = ""
+                end
             end
         end
     end,
