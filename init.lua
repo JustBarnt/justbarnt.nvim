@@ -7,7 +7,6 @@ if not vim.g.vscode then
     require("core.options")
     require("core.autocmds")
     require("core.user_commands").Utils()
-    require('core.largefile')
     --keymaps.plugins() -- run plugin related keybinds
     -- add in vim.g.vscode to prevent plugins from loading that don't work in vscode
     require("core.lazy") -- Setup Lazy plugin manager
