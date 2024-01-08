@@ -227,4 +227,10 @@ return {
             noice.setup(noice_config)
         end,
     },
+    {
+        "m-demare/hlargs.nvim",
+        config = function()
+            require('hlargs').setup()
+        end,
+    }
 }
