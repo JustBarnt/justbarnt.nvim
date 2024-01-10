@@ -7,8 +7,56 @@ if not ok then
 end
 
 local cmp = require("cmp")
+local luasnip = require("luasnip")
+
+local sources = cmp.config.sources({
+    { name = "nvim_lua" },
+    { name = "nvim_lsp" },
+    { name = "luasnip" },
+}, {
+    { name = "path" },
+    { name = "buffer", keyword_length = 5 },
+})
+
+local has_words_before = function()
+    unpack = unpack or table.unpack
+    local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+    return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+end
+
+local tabFunctionality = function(key,fallback)
+    if key == "Tab" then
+        if cmp.visible() then
+            cmp.select_next_item()
+        elseif luasnip.expand_or_jumpable() then
+            luasnip.expand_or_jump()
+        elseif has_words_before() then
+            cmp.complete()
+        else
+            fallback()
+        end
+    elseif key == "STab" then
+        if cmp.visible() then
+            cmp.select_prev_item()
+        elseif luasnip.jumpable(-1) then
+            luasnip.jump(-1)
+        else
+            fallback()
+        end
+    end
+end
+
 
 cmp.setup({
+    enabled = function()
+        local context = require('cmp.config.context')
+        if vim.api.nvim_get_mode().mode == 'c' then
+            return true
+        else
+            return not context.in_treesitter_capture("comment")
+                and not context.in_syntax_group("Comment")
+        end
+    end,
     mapping = {
         ["<C-n>"] = cmp.mapping.select_next_item(),
         ["<C-p>"] = cmp.mapping.select_prev_item(),
@@ -19,18 +67,10 @@ cmp.setup({
             behavior = cmp.ConfirmBehavior.Replace,
             select = true,
         })),
-        ["<tab>"] = cmp.mapping(cmp.mapping.confirm({ select = true }), { "i", "s", "c" }),
+        ["<Tab>"] = cmp.mapping(function(fallback) tabFunctionality("Tab", fallback) end, { "i", "s", "c" }),
+        ["<S-Tab>"] = cmp.mapping(function(fallback) tabFunctionality("STab", fallback) end, { "i", "s" })
     },
-    sources = cmp.config.sources({
-        { name = "nvim_lua" },
-        { name = "nvim_lsp" },
-        { name = "luasnip" },
-    }, {
-        { name = "path" },
-        { name = "buffer", keyword_length = 5 },
-    }, {
-        { name = "gh_issues" },
-    }),
+    sources = sources,
     completion = {
         autocomplete = {
             cmp.TriggerEvent.TextChanged,
@@ -87,26 +127,40 @@ cmp.setup({
                 cmdline = "[>_]",
                 path = "[path]",
                 luasnip = "[snip]",
-                gh_issues = "[issues]",
-                tn = "[TabNine]",
-                eruby = "[erb]",
-                cody = "[cody]",
             },
         }),
-    },
-
-    experimental = {
-        -- I like the new menu better! Nice work hrsh7th
-        native_menu = false,
-
-        -- Let's play with this for a day or two
-        ghost_text = false,
     },
 })
 
 cmp.setup.cmdline(":", {
     mapping = cmp.mapping.preset.cmdline(),
-    sources = {
-        { name = "cmdline" },
-    },
+    sources = cmp.config.sources({
+        { name = "cmdline" }
+    }, {
+        { name = "path" }
+    })
 })
+
+local bufIsBig = function(bufnr)
+    local max_filesize = 512 * 1024
+    local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(bufnr))
+    if ok and stats and stats.size > max_filesize then
+        return true
+    else
+        return false
+    end
+end
+
+vim.api.nvim_create_autocmd("BufReadPre", {
+    callback = function(t)
+        local src = sources
+        if not bufIsBig(t.buf) then
+            src[#src + 1] = { name = 'treesitter', group_index = 2 }
+        end
+
+        cmp.setup.buffer {
+            sources = src
+        }
+    end,
+})
+
