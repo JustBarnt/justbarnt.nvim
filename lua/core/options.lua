@@ -3,6 +3,8 @@ local opt = vim.opt
 local home_path = os.getenv("HOMEPATH")
 vim.g.python3_host_prog = "C:" .. home_path .. "/AppData/Local/Programs/Python/Python3/python.exe"
 
+
+
 -- For using powershell as terminal
 local powershell_options = {
     shell = vim.fn.executable("pwsh") == 1 and "pwsh" or "powershell",
@@ -16,6 +18,8 @@ local powershell_options = {
 for option, value in pairs(powershell_options) do
     vim.opt[option] = value
 end
+
+opt.foldenable = false
 
 -- Line Numbers
 opt.numberwidth = 2
