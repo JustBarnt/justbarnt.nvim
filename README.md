@@ -36,7 +36,10 @@
 - [ ] [Neogit](https://github.com/TimUntersberger/neogit) - Git UI (Potentially replace with vim-fugitive)
 - [ ] [GitSigns](https://github.com/lewis6991/gitsigns.nvim)
 
-# Note
+#### Resources
+https://vi-word.up.railway.app/
+
+#### Note
 - When in a Telescope prompt `<C-S>/<C-V>` will open the current file under cursor in a split/verticly split window.
 - `gx` opens a link under the cursor in your browser window. But supposedly does not work if netrw is disabled.
 - look into arrow.nvim, mikesmithgh/nvim, and hardtime.nvim
