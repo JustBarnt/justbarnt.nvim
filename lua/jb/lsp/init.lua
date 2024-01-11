@@ -107,7 +107,7 @@ local servers = {
                     vim.api.nvim_get_runtime_file("", true),
                     vim.fn.stdpath("data") .. "\\lazy\\",
                 },
-                checkThirdParty = true,
+                checkThirdParty = false,
             },
             hint = {
                 enable = true,
