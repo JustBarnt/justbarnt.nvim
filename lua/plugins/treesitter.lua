@@ -155,6 +155,7 @@ return {
             vim.treesitter.query.set("javascript", "context", "")
             vim.treesitter.query.set("typescript", "context", "")
             vim.treesitter.query.set("lua", "context", "")
+            vim.treesitter.query.set("xml", "context", "")
         end,
     },
     "nvim-treesitter/nvim-treesitter-refactor",
