@@ -1,5 +1,10 @@
 # Create my own Neovim distro
 
+# IMPORTANT: LIST OF PLUGINS GROWING NEED TO CREATE A CONCRETE NO CHANGE LIST OF PLUGINS TO INCORPORATE
+- [ ] - LIST MADE? 
+ 
+---
+
 # Plugins to Add/Switch
 - [ ] [legendary.nvim](https://github.com/mrjones2014/legendary.nvim) - VSCODE Command Pallete creator
 - [ ] [fugitive.vim](https://github.com/tpope/vim-fugitive) - The top of the line vim git integration
