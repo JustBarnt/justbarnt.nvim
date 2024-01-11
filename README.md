@@ -3,6 +3,7 @@
 # IMPORTANT: LIST OF PLUGINS GROWING NEED TO CREATE A CONCRETE NO CHANGE LIST OF PLUGINS TO INCORPORATE
 - [ ] - LIST MADE? 
  
+## Use builtin icons instead of nerdfonts
 ---
 
 # Plugins to Add/Switch
