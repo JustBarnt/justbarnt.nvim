@@ -1,5 +1,4 @@
 local M = {}
-
 M.register = {
     ["<leader>s"] = {
         name = "Telescope Search",
@@ -10,7 +9,7 @@ M.register = {
         g = { "<CMD>Telescope live_grep<CR>", "Search Files W/Grep" },
         d = { "<CMD>Telescope diagnostics<CR>", "Search Diagnostics" },
         r = { "<CMD>Telescope resume<CR>", "Resume Search" },
-        b = { "<CMD>Telescope file_browser path=%p:h select_buffer=true<CR>", "File Browser" },
+        b = { "<CMD>Telescope file_browser path=%p:h grouped=true use_fd=true select_buffer=true<CR>", "File Browser" },
     }
 }
 

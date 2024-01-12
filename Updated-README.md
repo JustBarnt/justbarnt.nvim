@@ -2,6 +2,10 @@
 
 ## Needs fixed/reconfigured
 - [ ] Which-key registers 
+    - [X] LSP
+    - [ ] Telescope
+    - [ ] Harpoon
+    - [ ] Rest of plugins :)
 - [ ] Detour
     - Figure out what all items to open in popups instead of a new buffer.
 - [ ] Nougat
