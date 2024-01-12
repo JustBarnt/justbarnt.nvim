@@ -94,7 +94,7 @@ local FTerm = function()
 end
 
 local telescope = function()
-    local registers = require 'core.which-key.registers.telescope'
+    local registers = require 'core.whichkey.registers.telescope'
     local wk = require 'which-key'
     wk.register(registers.register)
 end
@@ -102,7 +102,7 @@ end
 -- LSP Keybinds
 local lsp = function()
 	local wk = require 'which-key'
-    local registers = require 'core.which-key.registers.lsp'
+    local registers = require 'core.whichkey.registers.lsp'
     wk.register(registers.leader)
 end
 

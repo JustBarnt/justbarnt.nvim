@@ -101,7 +101,7 @@ return {
             }
 
             trouble.setup(trouble_options)
-            local registers = require 'core.which-key.registers.trouble'
+            local registers = require 'core.whichkey.registers.trouble'
             require 'which-key'.register(registers.register)
         end,
     },

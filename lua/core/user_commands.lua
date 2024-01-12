@@ -13,10 +13,44 @@ M.FTerm = function()
     -- Toggles terminal
     vim.api.nvim_create_user_command("FTermToggle", require("FTerm").toggle, { bang = true })
 
-    --[[  
-    For furture refernce commands can also be ran using FTerm by using 
+    --[[
+    For furture refernce commands can also be ran using FTerm by using
     require('FTerm').run('[COMMAND]')
   ]]
+end
+
+M.Harpoon = function()
+    local ok, harpoon = pcall(require, 'harpoon')
+
+    if not ok then
+        vim.notify("Harpoon not found")
+        return
+    end
+
+    vim.api.nvim_create_user_command("HarpoonAdd",
+        function()
+            harpoon:list():append()
+            local file_name = vim.api.nvim_buf_get_name(0)
+            vim.notify("Harpooned " .. file_name, vim.log.levels.INFO)
+        end,
+        { bang = true }
+    )
+
+    vim.api.nvim_create_user_command("HarpoonToggle",
+        function()
+             harpoon.ui:toggle_quick_menu(harpoon:list())
+        end,
+        { bang = true }
+    )
+
+    vim.api.nvim_create_user_command("HarpoonAppend",
+        function()
+            harpoon:list():append()
+            local file_name = vim.api.nvim_buf_get_name(0)
+            vim.notify("Harpooned " .. file_name, vim.log.levels.INFO)
+        end,
+        { bang = true }
+    )
 end
 
 M.Utils = function()
