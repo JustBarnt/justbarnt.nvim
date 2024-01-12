@@ -12,7 +12,8 @@ return {
     "nvim-telescope/telescope-ui-select.nvim",
     {
         "nvim-telescope/telescope-fzf-native.nvim",
-        build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
+        build =
+        "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
     },
     {
         "AckslD/nvim-neoclip.lua",
@@ -40,7 +41,8 @@ return {
                     multi_icon = "<>",
 
                     -- Set Path Display when searching in TelescopePrompt
-                    path_display = function(opts, path)
+                    path_display = { "smart" }, --[[ function(opts, path)
+                        -- vim.notify(vim.inspect(opts.entry_maker().display()))
                         local tail = require("telescope.utils").path_tail(path)
                         local parentFolder = string.match(path, ".*\\(.+\\.+\\.+\\).-$")
 
@@ -49,7 +51,7 @@ return {
                         else
                             return string.format("%s (%s)", tail, path)
                         end
-                    end,
+                    end, ]]
 
                     winblend = 0,
                     layout_strategy = "flex", --horizontal, vertical, center, cursor
@@ -126,6 +128,12 @@ return {
                     ["ui-select"] = {
                         require("telescope.themes").get_dropdown({}),
                     },
+
+                    pickers = {
+                        find_files = {
+                            find_command = vim.fn.executable("fd") == 1 and { "fd", "--strip-cwd-prefix", "--type", "f" } or nil
+                        }
+                    },
                 },
             })
 
@@ -139,13 +147,6 @@ return {
                     previewer = false,
                 }))
             end, { desc = "[/] Fuzzily search in current buffer" })
-
-            vim.keymap.set(
-                "n",
-                "<leader>fb",
-                ":Telescope file_browser path=%:p:h select_buffer=true<CR>",
-                { desc = "Seach [F]ile [B]rowser" }
-            )
 
             require("core.keymaps").telescope()
             require("telescope").load_extension("file_browser")
