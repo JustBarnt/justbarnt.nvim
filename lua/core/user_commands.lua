@@ -21,6 +21,9 @@ end
 
 M.Utils = function()
     vim.api.nvim_create_user_command("Trim", require("core.utils").trim, { bang = true })
+    vim.api.nvim_create_user_command("LspFormat", function()
+        require('conform').format({ async = true, lsp_fallback = true })
+    end, { bang = true })
 end
 
 return M

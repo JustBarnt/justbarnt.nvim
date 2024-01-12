@@ -21,6 +21,7 @@ M.leader = {
     },
     ["<leader>l"] = {
         name = "LSP",
+        f = { "<CMD>LspFormat<CR>", "LSP Format" },
         r = { "<CMD>LspRestart<CR>", "LSP Restart" },
         i = { "<CMD>LspInfo<CR>", "LSP Info" },
         s = { "<CMD>LspStart<CR>", "LSP Start" },
