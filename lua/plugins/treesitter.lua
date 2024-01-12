@@ -4,7 +4,6 @@ return {
         "nvim-treesitter/nvim-treesitter",
         config = function()
             if not pcall(require, "nvim-treesitter") then
-                -- TODO Add vim.notify log using figdet.nvim or some other notifying api
                 return
             end
 
@@ -16,9 +15,6 @@ return {
                     p = "@parameter.inner",
                     f = "@function.outer",
                     e = "@element",
-
-                    -- Not ready yet but @tjdevries (telescope creators) fault
-                    -- v = "@variable"
                 }
 
                 local n, p = {}, {}
@@ -53,6 +49,7 @@ return {
                     "cpp",
                     "vimdoc",
                     "php",
+                    "xml",
                 },
                 indent = {
                     enable = true,
@@ -60,7 +57,16 @@ return {
                 highlight = {
                     enable = true,
                     disable = function() -- Disable in large buffers
-                        return vim.api.nvim_buf_line_count(0) > 50000
+                        local filetype = vim.api.nvim_buf_get_option(0, 'filetype')
+                        local line_count = vim.api.nvim_buf_line_count(0)
+
+                        if filetype == 'xml' and line_count > 1000 then
+                            return true
+                        elseif line_count > 5000 then
+                            return true
+                        else 
+                            return false
+                        end
                     end,
                 },
                 refactor = {
@@ -76,10 +82,6 @@ return {
 
                     navigation = {
                         enable = false,
-                        keymaps = {
-                            goto_definition = "gd",
-                            list_definitions = "gD",
-                        },
                     },
                 },
 
