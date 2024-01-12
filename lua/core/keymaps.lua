@@ -105,22 +105,71 @@ end
 
 -- LSP Keybinds
 local lsp = function()
+    local wk = require('which-key')
+    local detour = require('detour').Detour
+
+    local code_registers = wk.register(
+        {
+            c = {
+                name = "[C]ode",
+                a = { "<cmd>lua vim.lsp.buf.code_action<CR>", "Code Actions" },
+                r = { "<cmd>lua vim.lsp.buf.rename<CR>", "Rename Symbol" },
+                s = { "<cmd>lua vim.lsp.buf.signature_help<CR>", "Signature Help" },
+            },
+            g = {
+                name = "[Go]-To LSP",
+                d = {
+                    function()
+                        vim.lsp.buf.definition({ reuse_win = false })
+                        detour()
+                    end,
+                    "[Go]-To [D]efinition"
+                },
+                D = {
+                    function()
+                        vim.lsp.buf.declaration({ reuse_win = false })
+                        detour()
+                    end,
+                    "[Go]-To [D]eclaration"
+                },
+                I = {
+                    function()
+                        vim.lsp.buf.implementation({ reuse_win = false })
+                        detour()
+                    end,
+                    "[Go]-To [I]mplementation"
+                },
+                T = {
+                    function()
+                        vim.lsp.buf.type_definition({ reuse_win = false })
+                        detour()
+                    end,
+                    "[Go]-To [T]ype Definition"
+                }
+            },
+            r = {
+                name = "LSP Restart",
+                r = { "<CMD>LspRestart<CR>", "LSP Restart" }
+            }
+        }, { prefix = "<leader>" })
+
+
     vim.keymap.set("i", "<C-s>", vim.lsp.buf.signature_help)
-
-    vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename)
-    vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action)
-
-    vim.keymap.set("n", "gd", function()
-        vim.lsp.buf.definition({ reuse_win = false })
-        require("detour").Detour()
-    end, { desc = "Goto Defintion" })
-
-    vim.keymap.set("n", "gD", vim.lsp.buf.declaration)
-    vim.keymap.set("n", "gT", vim.lsp.buf.type_definition)
     vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "lsp:hover" })
 
-    vim.keymap.set("n", "<leader>gI", vim.lsp.buf.implementation)
-    vim.keymap.set("n", "<leader>rr", "LspRestart")
+    -- vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename)
+    -- vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action)
+
+    -- vim.keymap.set("n", "gd", function()
+    --     vim.lsp.buf.definition({ reuse_win = false })
+    --     require("detour").Detour()
+    -- end, { desc = "Goto Defintion" })
+    --
+    -- vim.keymap.set("n", "gD", vim.lsp.buf.declaration)
+    -- vim.keymap.set("n", "gT", vim.lsp.buf.type_definition)
+
+    -- vim.keymap.set("n", "<leader>gI", vim.lsp.buf.implementation)
+    -- vim.keymap.set("n", "<leader>rr", "LspRestart")
 end
 
 -- Return keymap modules
@@ -130,3 +179,4 @@ return {
     telescope = telescope,
     lsp = lsp
 }
+
