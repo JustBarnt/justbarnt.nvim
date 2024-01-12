@@ -5,8 +5,6 @@ return {
         lazy = true,
         config = function()
             local wk = require("which-key")
-            vim.opt.timeout = true 
-            vim.opt.timeoutlen = 300
 
             ---@type Options
             local opts = {
@@ -28,12 +26,11 @@ return {
                 },
             }
 
-            local registers = require("core.which-key.registers")
             wk.setup(opts)
-            wk.register(registers.defaults, {
-                mode = "n",
+            --[[ wk.register(registers.defaults, {
+                mode = "n", -- register none, normal mode keys using options "i,x,v"
                 prefix = "<leader>",
-            })
+            }) ]]
 
             -- TODO: Register non_leader keybinds
         end,
