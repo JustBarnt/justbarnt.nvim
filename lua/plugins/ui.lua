@@ -101,49 +101,8 @@ return {
             }
 
             trouble.setup(trouble_options)
-
-            local remap = function(lhs, rhs, options, leader)
-                local useLeader = leader or true
-
-                if options.desc then
-                    options.desc = "Trouble: " .. options.desc
-                end
-
-                -- I'm to lazy to type "<leader>" a million times.
-                if useLeader then
-                    lhs = "<leader>" .. lhs
-                end
-
-                vim.keymap.set("n", lhs, rhs, options)
-            end
-
-            remap("tt", function()
-                require("trouble").toggle()
-            end, { desc = "[T]oggle [T]rouble", silent = true })
-
-            remap("tw", function()
-                require("trouble").toggle(mode[1])
-            end, { desc = "[T]oggle [W]orkspace Diagnostics", silent = true })
-
-            remap("td", function()
-                require("trouble").toggle(mode[2])
-            end, { desc = "[T]oggle [D]ocument Diagnostics", silent = true })
-
-            remap("tq", function()
-                require("trouble").toggle(mode[3])
-            end, { desc = "[T]oggle [Q]uick Fix", silent = true })
-
-            remap("tl", function()
-                require("trouble").toggle(mode[5])
-            end, { desc = "[T]oggle [L]ocal List", silent = true })
-
-            remap("tx", function()
-                trouble.close()
-            end, { desc = "[T]rouble Close", silent = true })
-
-            remap("gR", function()
-                require("trouble").toggle(mode[4])
-            end, { desc = "[T]oggle LSP References", silent = true }, false)
+            local registers = require 'core.which-key.registers.trouble'
+            require 'which-key'.register(registers.register)
         end,
     },
     {

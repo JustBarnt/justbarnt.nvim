@@ -1,4 +1,5 @@
 local M = {}
+
 M.register = {
     ["<leader>s"] = {
         name = "Telescope Search",
