@@ -26,9 +26,6 @@
 - [ ] [cyberdream.nvim](https://github.com/scottmckendry/cyberdream.nvim)
 - [ ] [kanagawa.nvim](https://github.com/rebelot/kanagawa.nvim)
 
-## Fixes
-- [ ] Which-key has issues when either disabling presets or disabling marks/registers
-
 ### Plugins to look at
 - [ ] [arrow.nvim](https://github.com/otavioschwanck/arrow.nvim)
 
