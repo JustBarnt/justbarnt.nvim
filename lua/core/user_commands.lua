@@ -42,15 +42,6 @@ M.Harpoon = function()
         end,
         { bang = true }
     )
-
-    vim.api.nvim_create_user_command("HarpoonAppend",
-        function()
-            harpoon:list():append()
-            local file_name = vim.api.nvim_buf_get_name(0)
-            vim.notify("Harpooned " .. file_name, vim.log.levels.INFO)
-        end,
-        { bang = true }
-    )
 end
 
 M.Utils = function()
